@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+source $HOME/.bashrc
+export TERM=xterm-256color
+export GNVIM=yes
+
+nvim "$@"

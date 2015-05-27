@@ -36,7 +36,6 @@ set hidden
 set switchbuf=useopen
 
 syntax on
-colorscheme jellybeans
 filetype off
 
 let mapleader=","
@@ -349,11 +348,12 @@ let g:ghcmod_ghc_options=['--make', '-fno-warn-tabs']
 
 " Haskell
 let g:haskell_tabular = 1
+let g:necoghc_enable_detailed_browse = 1
 
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open=1
-" let g:syntastic_python_checker_args="--ignore=E501,E225"
+let g:syntastic_python_checker_args="--ignore=E501,E225"
 let g:syntastic_python_checkers=["pyflakes"]
 let g:syntastic_haskell_ghc_mod_args='-g -fno-warn-tabs'
 
@@ -363,6 +363,7 @@ let g:user_emmet_leader_key='<C-m>'
 " Session
 let g:session_autoload=0
 let g:session_directory='~/.nvim/sessions'
+let g:session_autosave = 'no'
 
 " C/C++
 let c_C99=1
@@ -382,6 +383,13 @@ let g:cpp_use_qt = 1
 if g:IsOSX == 1
 	let g:tagbar_ctags_bin = "/usr/local/bin/ctags"
 endif
+
+" Solarized
+let g:solarized_termcolors=256
+set t_Co=256
+let g:solarized_degrade=1
+set background=dark
+colorscheme solarized
 
 let g:tagbar_width = 34
 let g:tagbar_sort = 0

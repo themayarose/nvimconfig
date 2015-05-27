@@ -1,0 +1,90 @@
+extends c
+
+###########################################################################
+#                            TextMate Snippets                            #
+###########################################################################
+snippet beginend "$1.begin(), $1.end() (beginend)"
+${1:v}${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}begin(), $1${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}end()
+endsnippet
+
+snippet cl "class .. (class)"
+class ${1:`!p snip.rv = snip.basename or "name"`} {
+private:
+	${0:/* data */}
+
+public:
+	${1/(\w+).*/$1/}(${2:arguments});
+${3:	virtual ~${1/(\w+).*/$1/}();
+}
+};
+endsnippet
+
+snippet ns "namespace .. (namespace)"
+namespace${1/.+/ /m}${1:`!p snip.rv = snip.basename or "name"`} {
+	${VISUAL}${0:${VISUAL/(.*)/(?1::\/* code *\/)/}}
+}${1/.+/ \/* /m}$1${1/.+/ *\/ /m}
+endsnippet
+
+snippet readfile "read file (readF)"
+std::vector<char> v;
+if (FILE *fp = fopen(${1:"filename"}, "r")) {
+	char buf[1024];
+	while(size_t len = fread(buf, 1, sizeof(buf), fp))
+		v.insert(v.end(), buf, buf + len);
+	fclose(fp);
+}
+endsnippet
+
+snippet map "std::map (map)"
+std::map<${1:key}, ${2:value}> map$0;
+endsnippet
+
+snippet vector "std::vector (v)"
+std::vector<${1:char}> v$0;
+endsnippet
+
+snippet tp "template <typename ..> (template)"
+template <typename ${1:_InputIter}>
+endsnippet
+
+snippet m "method (method)"
+${1:void} ${2:`!p snip.rv = snip.basename or "class_name"`}::${3:method_name}(${4}) ${5:const }{
+	${VISUAL}${0:${VISUAL/(.*)/(?1::\/* code *\/)/}}
+}
+endsnippet
+
+snippet forr "range-based for (for)"
+for (${1:auto} ${2:& }${3:item} : ${4:container}) {
+	${VISUAL}${0:${VISUAL/(.*)/(?1::\/* code *\/)/}}
+}
+endsnippet
+
+snippet qconn "Qt multiline connect (connect)"
+connect(
+	${1:sender_ptr},
+	${2:SIGNAL}(${3:name}(${4:arguments})),
+	${5:receiver_ptr},
+	${6:SLOT}(${7:$3}(${8:$4})) );
+$0
+endsnippet
+
+snippet accd "Accessor declaration"
+${1:type} ${2:property_name}() const;
+void $2(${3:const $1&});
+
+$0
+endsnippet
+
+snippet acc "Accessor"
+${1:int} ${2:`!p snip.rv = snip.basename or "class_name"`}::${3:property_name}() const {
+	return $3_;
+}
+
+void $2::$3(${4:const $1&} ${5:new`!p snip.rv = t[3][0].upper() + t[3][1:] if len(t[3]) > 0 else t[3]`}) {
+	$3_ = $5;
+}
+
+$0
+endsnippet
+
+# vim:ft=snippets:

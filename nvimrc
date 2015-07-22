@@ -306,6 +306,7 @@ Plug 'kana/vim-textobj-indent'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --system-libclang --system-boost' }
 Plug 'godlygeek/tabular'
 Plug 'junegunn/seoul256.vim'
+Plug 'othree/yajs.vim'
 
 call plug#end()
 

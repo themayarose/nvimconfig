@@ -34,6 +34,7 @@ set sessionoptions=curdir,tabpages,localoptions,blank,buffers,folds,resize,winpo
 set wildcharm=<C-,>
 set hidden
 set switchbuf=useopen
+set nohlsearch
 
 syntax on
 filetype off
@@ -303,7 +304,7 @@ Plug 'bps/vim-textobj-python'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'kana/vim-textobj-indent'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --system-libclang --system-boost' }
+Plug 'Valloric/YouCompleteMe', { 'do': '/usr/bin/python2 third_party/ycmd/build.py --clang-completer --system-libclang --system-boost' }
 Plug 'godlygeek/tabular'
 Plug 'junegunn/seoul256.vim'
 Plug 'othree/yajs.vim'

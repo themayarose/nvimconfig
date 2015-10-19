@@ -308,6 +308,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': '/usr/bin/python2 third_party/ycmd/build.
 Plug 'godlygeek/tabular'
 Plug 'junegunn/seoul256.vim'
 Plug 'othree/yajs.vim'
+Plug 'mxw/vim-jsx'
 
 call plug#end()
 

@@ -275,7 +275,7 @@ endfunction
 call plug#begin('~/.nvim/plugged')
 
 Plug 'bling/vim-airline'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'majutsushi/tagbar'
@@ -295,6 +295,7 @@ Plug 'xolox/vim-session'
 Plug 'jmcantrell/vim-virtualenv'
 Plug 'marijnh/tern_for_vim'
 Plug 'kchmck/vim-coffee-script'
+" Plug 'lukaszkorecki/CoffeeTags'
 Plug 'closetag.vim'
 Plug 'fatih/vim-go'
 Plug 'tpope/vim-commentary'
@@ -304,7 +305,7 @@ Plug 'bps/vim-textobj-python'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'kana/vim-textobj-indent'
-Plug 'Valloric/YouCompleteMe', { 'do': '/usr/bin/python2 third_party/ycmd/build.py --clang-completer --system-libclang --system-boost' }
+Plug 'Valloric/YouCompleteMe', { 'do': '/usr/bin/python2 install.py --clang-completer --system-libclang --system-boost' }
 Plug 'godlygeek/tabular'
 Plug 'junegunn/seoul256.vim'
 Plug 'othree/yajs.vim'

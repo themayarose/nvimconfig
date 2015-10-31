@@ -29,7 +29,7 @@ set foldlevel=99
 set colorcolumn=80
 set wildmenu
 set autoread
-set directory=~/.nvim/swap
+set directory=~/.config/nvim/swap
 set sessionoptions=curdir,tabpages,localoptions,blank,buffers,folds,resize,winpos,winsize
 set wildcharm=<C-,>
 set hidden
@@ -272,7 +272,7 @@ endfunction
 
 " Vim-Plug Plugins
 
-call plug#begin('~/.nvim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 Plug 'bling/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -293,7 +293,7 @@ Plug 'dbext.vim'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug 'jmcantrell/vim-virtualenv'
-Plug 'marijnh/tern_for_vim'
+Plug 'marijnh/tern_for_vim', { 'do': 'rm -rf node_modules && npm install && npm install https://github.com/angelozerr/tern-react' }
 Plug 'kchmck/vim-coffee-script'
 " Plug 'lukaszkorecki/CoffeeTags'
 Plug 'closetag.vim'
@@ -308,7 +308,9 @@ Plug 'kana/vim-textobj-indent'
 Plug 'Valloric/YouCompleteMe', { 'do': '/usr/bin/python2 install.py --clang-completer --system-libclang --system-boost' }
 Plug 'godlygeek/tabular'
 Plug 'junegunn/seoul256.vim'
-Plug 'othree/yajs.vim'
+" Plug 'othree/yajs.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
 call plug#end()
 
@@ -365,7 +367,7 @@ let g:user_emmet_leader_key='<C-m>'
 
 " Session
 let g:session_autoload=0
-let g:session_directory='~/.nvim/sessions'
+let g:session_directory='~/.config/nvim/sessions'
 let g:session_autosave = 'no'
 
 " C/C++
@@ -490,4 +492,4 @@ highlight clear Conceal
 " endif
 " colorscheme solarized
 
-
+let g:loaded_python3_provider = 1

@@ -311,6 +311,7 @@ Plug 'junegunn/seoul256.vim'
 " Plug 'othree/yajs.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'hdima/python-syntax'
 
 call plug#end()
 

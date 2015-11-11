@@ -35,6 +35,8 @@ set wildcharm=<C-,>
 set hidden
 set switchbuf=useopen
 set nohlsearch
+set background=dark
+set t_Co=256
 
 syntax on
 filetype off
@@ -274,6 +276,8 @@ endfunction
 
 call plug#begin('~/.config/nvim/plugged')
 
+" Vim improvements
+Plug 'Valloric/YouCompleteMe', { 'do': '/usr/bin/python2 install.py --clang-completer --system-libclang --system-boost' }
 Plug 'bling/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
@@ -284,34 +288,54 @@ Plug 'honza/vim-snippets'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
+Plug 'closetag.vim'
+Plug 'tpope/vim-commentary'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-indent'
+Plug 'godlygeek/tabular'
+
+" Haskell
 Plug 'eagletmt/ghcmod-vim'
 Plug 'dag/vim2hs'
 Plug 'ujihisa/neco-ghc'
 Plug 'Shougo/vimproc', { 'do': 'make -f make_unix.mak' }
 Plug 'bitc/lushtags'
-Plug 'dbext.vim'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
+Plug 'pbrisbin/vim-syntax-shakespeare'
+
+" Python
 Plug 'jmcantrell/vim-virtualenv'
+Plug 'bps/vim-textobj-python'
+Plug 'hdima/python-syntax'
+Plug 'hynek/vim-python-pep8-indent'
+
+" C/C++
+Plug 'octol/vim-cpp-enhanced-highlight'
+
+" Javascript
 Plug 'marijnh/tern_for_vim', { 'do': 'rm -rf node_modules && npm install && npm install https://github.com/angelozerr/tern-react' }
 Plug 'kchmck/vim-coffee-script'
-" Plug 'lukaszkorecki/CoffeeTags'
-Plug 'closetag.vim'
-Plug 'fatih/vim-go'
-Plug 'tpope/vim-commentary'
-Plug 'altercation/vim-colors-solarized'
-Plug 'kana/vim-textobj-user'
-Plug 'bps/vim-textobj-python'
-Plug 'tacahiroy/ctrlp-funky'
-Plug 'pbrisbin/vim-syntax-shakespeare'
-Plug 'kana/vim-textobj-indent'
-Plug 'Valloric/YouCompleteMe', { 'do': '/usr/bin/python2 install.py --clang-completer --system-libclang --system-boost' }
-Plug 'godlygeek/tabular'
-Plug 'junegunn/seoul256.vim'
-" Plug 'othree/yajs.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'hdima/python-syntax'
+" Plug 'lukaszkorecki/CoffeeTags'
+" Plug 'othree/yajs.vim'
+
+" Go
+Plug 'fatih/vim-go'
+
+" Colorschemes
+Plug 'tacahiroy/ctrlp-funky'
+" Plug 'altercation/vim-colors-solarized'
+Plug 'frankier/neovim-colors-solarized-truecolor-only'
+Plug 'junegunn/seoul256.vim'
+Plug 'mkarmona/materialbox'
+Plug 'https://github.com/morhetz/gruvbox'
+Plug 'jscappini/material.vim'
+Plug 'mkarmona/colorsbox'
+
+" Deactivated
+" Plug 'dbext.vim'
 
 call plug#end()
 
@@ -359,9 +383,9 @@ let g:necoghc_enable_detailed_browse = 1
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open=1
-let g:syntastic_python_checker_args="--ignore=E501,E225"
-let g:syntastic_python_checkers=["pyflakes"]
-let g:syntastic_haskell_ghc_mod_args='-g -fno-warn-tabs'
+" let g:syntastic_python_checker_args="--ignore=E501,E225"
+" let g:syntastic_python_checkers=["pyflakes"]
+" let g:syntastic_haskell_ghc_mod_args='-g -fno-warn-tabs'
 
 " Emmet
 let g:user_emmet_leader_key='<C-m>'
@@ -384,18 +408,13 @@ let c_comment_numbers=1
 let c_comment_types=1
 let c_comment_date_time=1
 let g:cpp_use_qt = 1
+let g:cpp_class_scope_highlight = 1
+let g:cpp_experimental_template_highlight = 1
 
 " Tagbar
 if g:IsOSX == 1
 	let g:tagbar_ctags_bin = "/usr/local/bin/ctags"
 endif
-
-" Solarized
-let g:solarized_termcolors=256
-set t_Co=256
-let g:solarized_degrade=1
-set background=dark
-colorscheme solarized
 
 let g:tagbar_width = 34
 let g:tagbar_sort = 0
@@ -463,12 +482,8 @@ au BufNewFile,BufRead,BufReadPost *.hs set omnifunc=necoghc#omnifunc
 au BufNewFile,BufRead,BufReadPost *.hs setlocal expandtab
 
 " CPP
-au BufNewFile,BufRead,BufReadPost *.cpp set syntax=cpp11_2
-au BufNewFile,BufRead,BufReadPost *.h set syntax=cpp11_2
-
-" Python
-au BufNewFile,BufRead,BufReadPost *.py set noexpandtab
-au BufNewFile,BufRead,BufReadPost *.py set tabstop=4
+" au BufNewFile,BufRead,BufReadPost *.cpp set syntax=cpp11_2
+" au BufNewFile,BufRead,BufReadPost *.h set syntax=cpp11_2
 
 " HTML
 au BufNewFile,BufRead,BufReadPost *.html set filetype=htmldjango
@@ -486,11 +501,9 @@ endif
 highlight clear Conceal
 
 " Solarized
-" set background=dark
-" let g:solarized_termcolors=256
-" if !has("gui")
-" 	let g:solarized_degrade=1
-" endif
-" colorscheme solarized
+let g:solarized_termcolors=256
+
+colorscheme materialbox
+
 
 let g:loaded_python3_provider = 1

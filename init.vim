@@ -123,8 +123,11 @@ nnoremap _ <C-w><
 nnoremap <C-q> <C-w>q
 
 " Terminal stuff
-tnoremap <Esc> <c-\><c-n>
+tnoremap <Esc> <c-\><c-n><c-w><c-p>
+tnoremap <c-\><c-\> <c-\><c-n>
 tnoremap <c-\><c-n> <Esc>
+
+au BufWinEnter,WinEnter term://* startinsert
 
 " Window shortcuts
 if g:IsOSX == 1

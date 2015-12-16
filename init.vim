@@ -258,7 +258,7 @@ function! InsertModeTab()
 		call UltiSnips#ExpandSnippetOrJump()
 
 		if g:ulti_expand_or_jump_res == 0
-			call feedkeys("\<c-enter>")
+			call feedkeys("\<c-x>\<c-o>")
 		endif
 	endif
 
@@ -280,7 +280,8 @@ endfunction
 call plug#begin('~/.config/nvim/plugged')
 
 " Vim improvements
-Plug 'Valloric/YouCompleteMe', { 'do': '/usr/bin/python2 install.py --clang-completer --system-libclang --system-boost' }
+" Plug 'Valloric/YouCompleteMe', { 'do': '/usr/bin/python2 install.py --clang-completer --system-libclang --system-boost' }
+Plug 'Shougo/deoplete.nvim'
 Plug 'bling/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
@@ -312,9 +313,11 @@ Plug 'jmcantrell/vim-virtualenv'
 Plug 'bps/vim-textobj-python'
 Plug 'hdima/python-syntax'
 Plug 'hynek/vim-python-pep8-indent'
+Plug 'davidhalter/jedi-vim'
 
 " C/C++
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'Rip-Rip/clang_complete', { 'do': 'make' }
 
 " Javascript
 Plug 'marijnh/tern_for_vim', { 'do': 'rm -rf node_modules && npm install && npm install https://github.com/angelozerr/tern-react' }
@@ -363,6 +366,27 @@ let g:airline#extensions#tabline#formatter = 'custom_format'
 let g:ycm_key_invoke_completion = "<c-enter>"
 let g:ycm_key_list_select_completion = []
 let g:ycm_key_list_previous_completion = []
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources = {}
+let g:deoplete#sources._ = ['buffer', 'ultisnips', 'file', 'omni']
+let g:deoplete#sources.text = ['buffer', 'ultisnips', 'file', 'omni', 'dictionary']
+let g:deoplete#sources.haskell = ['buffer', 'ultisnips', 'file', 'ghc']
+
+
+" Jedi
+autocmd FileType python setlocal omnifunc=jedi#completions
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#smart_auto_mappings = 0
+let g:jedi#show_call_signatures = 0
+
+" Clang Completer
+let g:clang_complete_auto = 0
+let g:clang_auto_select = 0
+let g:clang_default_keymappings = 0
+let g:clang_use_library = 1"
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<s-enter>"
@@ -509,4 +533,4 @@ let g:solarized_termcolors=256
 colorscheme materialbox
 
 
-let g:loaded_python3_provider = 1
+" let g:loaded_python3_provider = 1

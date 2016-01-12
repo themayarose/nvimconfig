@@ -308,6 +308,10 @@ Plug 'Shougo/vimproc', { 'do': 'make -f make_unix.mak' }
 Plug 'bitc/lushtags'
 Plug 'pbrisbin/vim-syntax-shakespeare'
 
+" Rust
+Plug 'racer-rust/vim-racer'
+Plug 'rust-lang/rust.vim'
+
 " Python
 Plug 'jmcantrell/vim-virtualenv'
 Plug 'bps/vim-textobj-python'
@@ -373,6 +377,7 @@ let g:deoplete#sources = {}
 let g:deoplete#sources._ = ['buffer', 'ultisnips', 'file', 'omni']
 let g:deoplete#sources.text = ['buffer', 'ultisnips', 'file', 'omni', 'dictionary']
 let g:deoplete#sources.haskell = ['buffer', 'ultisnips', 'file', 'ghc']
+let g:deoplete#sources.rust = ['buffer', 'ultisnips', 'file', 'racer']
 
 
 " Jedi
@@ -445,57 +450,6 @@ endif
 
 let g:tagbar_width = 34
 let g:tagbar_sort = 0
-let g:tagbar_type_objc = {
-	\ 'ctagstype' : 'ObjectiveC',
-	\ 'kinds'     : [
-		\ 'i:interface',
-		\ 'I:implementation',
-		\ 'p:Protocol',
-		\ 'm:Object_method',
-		\ 'c:Class_method',
-		\ 'v:Global_variable',
-		\ 'F:Object field',
-		\ 'f:function',
-		\ 'p:property',
-		\ 't:type_alias',
-		\ 's:type_structure',
-		\ 'e:enumeration',
-		\ 'M:preprocessor_macro',
-	\ ],
-	\ 'sro'		   : ' ',
-	\ 'kind2scope' : {
-		\ 'i' : 'interface',
-		\ 'I' : 'implementation',
-		\ 'p' : 'Protocol',
-		\ 's' : 'type_structure',
-		\ 'e' : 'enumeration'
-	\ },
-	\ 'scope2kind' : {
-		\ 'interface'	   : 'i',
-		\ 'implementation' : 'I',
-		\ 'Protocol'	   : 'p',
-		\ 'type_structure' : 's',
-		\ 'enumeration'    : 'e'
-	\ }
-\ }
-
-let g:tagbar_type_coffee = {
-\ 'ctagsbin' : 'coffeetags',
-\ 'ctagsargs' : '--include-vars',
-\ 'kinds' : [
-\ 'f:functions',
-\ 'c:classes',
-\ 'o:object',
-\ 'v:variables',
-\ 'p:prototypes',
-\ 'b:blocks'
-\ ],
-\ 'sro' : ".",
-\ 'kind2scope' : {
-\ 'f' : 'object',
-\ 'o' : 'object',
-\ }
-\ }
 
 " Autocommands
 

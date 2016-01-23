@@ -379,6 +379,8 @@ let g:deoplete#sources.text = ['buffer', 'ultisnips', 'file', 'omni', 'dictionar
 let g:deoplete#sources.haskell = ['buffer', 'ultisnips', 'file', 'ghc']
 let g:deoplete#sources.rust = ['buffer', 'ultisnips', 'file', 'racer']
 
+" JavaScript
+let g:jsx_ext_required = 0
 
 " Jedi
 autocmd FileType python setlocal omnifunc=jedi#completions

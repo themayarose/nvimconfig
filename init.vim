@@ -357,6 +357,7 @@ let g:ctrlp_open_multiple_files = 'i'
 let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_extensions = ['funky']
 let g:ctrlp_funky_syntax_highlight = 1
+let g:ctrlp_custom_ignore = { 'dir':  '\v([\/]\.(git|hg|svn)|node_modules|jspm_packages|bower_components|[_]?build|\.cabal_sandbox)$' }
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1

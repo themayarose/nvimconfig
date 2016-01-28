@@ -41,7 +41,7 @@ set t_Co=256
 syntax on
 filetype off
 
-let mapleader=","
+" let mapleader=","
 
 let $PATH = expand("~/.cabal/bin") . ':' . $PATH
 
@@ -282,7 +282,8 @@ call plug#begin('~/.config/nvim/plugged')
 " Vim improvements
 " Plug 'Valloric/YouCompleteMe', { 'do': '/usr/bin/python2 install.py --clang-completer --system-libclang --system-boost' }
 Plug 'Shougo/deoplete.nvim'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
@@ -337,12 +338,15 @@ Plug 'fatih/vim-go'
 " Colorschemes
 Plug 'tacahiroy/ctrlp-funky'
 " Plug 'altercation/vim-colors-solarized'
-Plug 'frankier/neovim-colors-solarized-truecolor-only'
-Plug 'junegunn/seoul256.vim'
+" Plug 'frankier/neovim-colors-solarized-truecolor-only'
+" Plug 'junegunn/seoul256.vim'
 Plug 'mkarmona/materialbox'
+Plug 'xero/sourcerer.vim'
+Plug 'fent/vim-frozen'
 Plug 'https://github.com/morhetz/gruvbox'
-Plug 'jscappini/material.vim'
-Plug 'mkarmona/colorsbox'
+" Plug 'jscappini/material.vim'
+" Plug 'mkarmona/colorsbox'
+" Plug 'baskerville/bubblegum'
 
 " Deactivated
 " Plug 'dbext.vim'
@@ -363,6 +367,8 @@ let g:ctrlp_custom_ignore = { 'dir':  '\v([\/]\.(git|hg|svn)|node_modules|jspm_p
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#formatter = 'custom_format'
+" let g:airline_theme = 'bubblegum'
+
 
 " delimitMate
 " let g:delimitMate_tab2exit = 0
@@ -488,7 +494,11 @@ highlight clear Conceal
 " Solarized
 let g:solarized_termcolors=256
 
-colorscheme materialbox
+
+let g:gruvbox_italic = 1
+let g:gruvbox_contrast_dark = 'medium'
+
+colorscheme gruvbox
 
 
 " let g:loaded_python3_provider = 1

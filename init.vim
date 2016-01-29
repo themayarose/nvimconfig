@@ -4,7 +4,6 @@ if filereadable(expand("~/.nvimrc_local_prepend"))
 endif
 
 " Default options
-set nocompatible
 set autoindent
 set ignorecase
 set wrap
@@ -36,7 +35,7 @@ set hidden
 set switchbuf=useopen
 set nohlsearch
 set background=dark
-set t_Co=256
+" set t_Co=256
 
 syntax on
 filetype off
@@ -325,7 +324,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'Rip-Rip/clang_complete', { 'do': 'make' }
 
 " Javascript
-Plug 'marijnh/tern_for_vim', { 'do': 'rm -rf node_modules && npm install && npm install https://github.com/angelozerr/tern-react' }
+Plug 'ternjs/tern_for_vim', { 'do': 'rm -rf node_modules && npm install && npm install https://github.com/angelozerr/tern-react' }
 Plug 'kchmck/vim-coffee-script'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -372,6 +371,12 @@ let g:airline#extensions#tabline#formatter = 'custom_format'
 
 " delimitMate
 " let g:delimitMate_tab2exit = 0
+
+
+" Tern
+let g:tern_show_signature_in_pum = 1
+let g:tern_show_argument_hints = 'on_move'
+let $NODE_PATH = 'jspm_packages/npm:src:' . $NODE_PATH
 
 " YCM
 let g:ycm_key_invoke_completion = "<c-enter>"

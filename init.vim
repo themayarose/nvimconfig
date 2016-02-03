@@ -432,6 +432,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open=1
 " let g:syntastic_python_checker_args="--ignore=E501,E225"
 " let g:syntastic_python_checkers=["pyflakes"]
+let g:syntastic_javascript_checkers=["eslint"]
 " let g:syntastic_haskell_ghc_mod_args='-g -fno-warn-tabs'
 
 " Emmet

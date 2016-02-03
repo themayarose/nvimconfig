@@ -36,6 +36,7 @@ set switchbuf=useopen
 set nohlsearch
 set background=dark
 " set t_Co=256
+set title
 
 syntax on
 filetype off

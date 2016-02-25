@@ -41,8 +41,6 @@ set title
 syntax on
 filetype off
 
-" let mapleader=","
-
 let $PATH = expand("~/.cabal/bin") . ':' . $PATH
 
 " Moar windoze
@@ -65,6 +63,11 @@ endif
 nnoremap j gj
 nnoremap k gk
 nnoremap Y y$
+nnoremap <cr> :
+nnoremap Q  <Nop>
+nnoremap q: <Nop>
+nnoremap q/ <Nop>
+nnoremap q? <Nop>
 
 " Goddammned typos.
 command W :w
@@ -75,9 +78,9 @@ command Wsudo :w ! sudo tee %
 
 
 " Plugins 101
-map <F3> :NERDTreeToggle<cr>
-map <F4> :NERDTreeMirror<cr>
-map <F2> :TagbarToggle<cr>
+noremap <F3> :NERDTreeToggle<cr>
+noremap <F4> :NERDTreeMirror<cr>
+noremap <F2> :TagbarToggle<cr>
 
 " Leader-based tab stuff can stay... for now.
 nnoremap <leader>th :tabp<cr>
@@ -208,7 +211,7 @@ nnoremap <silent> <leader>gpl :Git pull<cr>
 nnoremap <silent> <leader>gd :Gdiff<cr>
 
 " Tab stuff
-inoremap <expr> <enter> pumvisible() ? "\<c-y>" : "\<enter>"
+inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<enter>"
 inoremap <silent> <Tab> <c-r>=InsertModeTab()<cr>
 inoremap <silent> <S-Tab> <c-r>=BackTab()<cr>
 snoremap <silent> <Tab> <esc>:call InsertModeTab()<cr>

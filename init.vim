@@ -6,6 +6,7 @@ endif
 " Default options
 set autoindent
 set ignorecase
+set smartcase
 set wrap
 set linebreak
 set ruler

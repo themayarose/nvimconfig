@@ -94,6 +94,8 @@ nnoremap <leader>tmj :tabm 0<cr>
 nnoremap <leader>tmk :tabm<cr>
 nnoremap <leader>tn :tabnew<cr>
 nnoremap <leader>tq :tabclose<cr>
+nnoremap <leader>] :tabn<cr>
+nnoremap <leader>[ :tabp<cr>
 
 " Projects
 nnoremap <silent> <leader>pp :OpenSession<cr>
@@ -371,6 +373,7 @@ let g:ctrlp_custom_ignore = { 'dir':  '\v([\/]\.(git|hg|svn)|node_modules|jspm_p
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#formatter = 'custom_format'
+let g:airline#extensions#tabline#show_buffers = 2
 " let g:airline_theme = 'bubblegum'
 
 

@@ -195,10 +195,10 @@ nnoremap <silent> <leader>sf :CtrlPFunky<cr>
 nnoremap <silent> <leader>sw :exec 'CtrlPFunky' . expand('<cword>')<cr>
 
 " Error management stuff
-nnoremap <Leader>es :Errors<CR>
-nnoremap <Leader>ec :lcl<CR>
-nnoremap <Leader>en :lnext<CR>
-nnoremap <Leader>ep :lprev<CR>
+nnoremap <silent> <Leader>es :lop<CR>
+nnoremap <silent> <Leader>ec :lcl<CR>
+nnoremap <silent> <Leader>en :lnext<CR>
+nnoremap <silent> <Leader>ep :lprev<CR>
 
 " Writing stuff
 nnoremap <silent> <leader>bW+ :<c-u>exec WriterBuffer()<cr>
@@ -292,7 +292,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
+Plug 'benekastah/neomake'
 Plug 'majutsushi/tagbar'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -331,7 +332,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'Rip-Rip/clang_complete', { 'do': 'make' }
 
 " Javascript
-Plug 'ternjs/tern_for_vim', { 'do': 'rm -rf node_modules && npm install && npm install https://github.com/angelozerr/tern-react' }
+" Plug 'ternjs/tern_for_vim', { 'do': 'rm -rf node_modules && npm install && npm install https://github.com/angelozerr/tern-react' }
 Plug 'kchmck/vim-coffee-script'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -443,8 +444,17 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open=1
 " let g:syntastic_python_checker_args="--ignore=E501,E225"
 " let g:syntastic_python_checkers=["pyflakes"]
-let g:syntastic_javascript_checkers=["eslint"]
+" let g:syntastic_javascript_checkers=["eslint"]
 " let g:syntastic_haskell_ghc_mod_args='-g -fno-warn-tabs'
+
+" Neomake
+let g:neomake_logfile='/home/ugopozo/neomake.log'
+let g:neomake_open_list=0
+let g:neomake_python_enabled_makers=['pylint']
+let g:neomake_javascript_enabled_makers=['eslint']
+
+au! BufEnter *.js,*.py,*.hs,*.c,*.cpp,*.rs,*.go Neomake
+au! BufWritePost *.js,*.py,*.hs,*.c,*.cpp,*.rs,*.go Neomake
 
 " Emmet
 let g:user_emmet_leader_key='<C-m>'

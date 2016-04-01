@@ -70,6 +70,8 @@ nnoremap q: <Nop>
 nnoremap q/ <Nop>
 nnoremap q? <Nop>
 
+autocmd BufReadPost quickfix nnoremap <buffer> <cr> <cr>
+
 " Goddammned typos.
 command W :w
 command Q :q
@@ -313,7 +315,7 @@ Plug 'eagletmt/ghcmod-vim'
 Plug 'dag/vim2hs'
 Plug 'ujihisa/neco-ghc'
 Plug 'Shougo/vimproc', { 'do': 'make -f make_unix.mak' }
-Plug 'bitc/lushtags'
+" Plug 'bitc/lushtags'
 Plug 'pbrisbin/vim-syntax-shakespeare'
 
 " Rust
@@ -452,6 +454,7 @@ let g:neomake_logfile='/home/ugopozo/neomake.log'
 let g:neomake_open_list=0
 let g:neomake_python_enabled_makers=['pylint']
 let g:neomake_javascript_enabled_makers=['eslint']
+let g:neomake_verbose = 0
 
 au! BufEnter *.js,*.py,*.hs,*.c,*.cpp,*.rs,*.go Neomake
 au! BufWritePost *.js,*.py,*.hs,*.c,*.cpp,*.rs,*.go Neomake

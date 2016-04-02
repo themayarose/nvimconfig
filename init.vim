@@ -12,7 +12,7 @@ set linebreak
 set ruler
 set showmatch
 set showmode
-set noexpandtab
+set expandtab
 set tabstop=4
 set shiftwidth=4
 set shiftround
@@ -501,7 +501,7 @@ au BufNewFile,BufRead,BufReadPost *.hs nmap <Leader>hr V:PointFree!<CR>
 au BufNewFile,BufRead,BufReadPost *.hs nmap <Leader>hl :HLint<CR>
 au BufNewFile,BufRead,BufReadPost *.hs nmap <Leader>hgl :GhcModLint<CR>
 au BufNewFile,BufRead,BufReadPost *.hs set omnifunc=necoghc#omnifunc
-au BufNewFile,BufRead,BufReadPost *.hs setlocal expandtab
+" au BufNewFile,BufRead,BufReadPost *.hs setlocal expandtab
 
 " CPP
 " au BufNewFile,BufRead,BufReadPost *.cpp set syntax=cpp11_2

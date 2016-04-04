@@ -327,7 +327,8 @@ Plug 'jmcantrell/vim-virtualenv'
 Plug 'bps/vim-textobj-python'
 Plug 'hdima/python-syntax'
 Plug 'hynek/vim-python-pep8-indent'
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
+Plug 'zchee/deoplete-jedi'
 
 " C/C++
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -398,6 +399,7 @@ let g:ycm_key_list_previous_completion = []
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources = {}
 let g:deoplete#sources._ = ['buffer', 'ultisnips', 'file', 'omni']
+let g:deoplete#sources['python'] = ['buffer', 'ultisnips', 'file', 'jedi']
 let g:deoplete#sources.javascript = ['buffer', 'ultisnips', 'file']
 let g:deoplete#sources.jsx = ['buffer', 'ultisnips', 'file']
 let g:deoplete#sources['javascript.jsx'] = ['buffer', 'ultisnips', 'file']
@@ -410,17 +412,18 @@ let g:deoplete#sources.text = ['buffer', 'ultisnips', 'file', 'omni', 'dictionar
 let g:jsx_ext_required = 0
 
 " Jedi
-autocmd FileType python setlocal omnifunc=jedi#completions
-let g:jedi#completions_enabled = 0
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#smart_auto_mappings = 0
-let g:jedi#show_call_signatures = 0
+" autocmd FileType python setlocal omnifunc=jedi#completions
+" let g:jedi#completions_enabled = 0
+" let g:jedi#auto_vim_configuration = 0
+" let g:jedi#smart_auto_mappings = 0
+" let g:jedi#show_call_signatures = 0
+let g:deoplete#sources#jedi#show_docstring = 1
 
 " Clang Completer
 let g:clang_complete_auto = 0
 let g:clang_auto_select = 0
 let g:clang_default_keymappings = 0
-let g:clang_use_library = 1"
+let g:clang_use_library = 1
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<s-enter>"

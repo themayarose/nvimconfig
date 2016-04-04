@@ -450,7 +450,7 @@ let g:syntastic_check_on_open=1
 " let g:syntastic_haskell_ghc_mod_args='-g -fno-warn-tabs'
 
 " Neomake
-let g:neomake_logfile='/home/ugopozo/neomake.log'
+let g:neomake_logfile=$HOME . '/neomake.log'
 let g:neomake_open_list=0
 let g:neomake_python_enabled_makers=['pylint']
 let g:neomake_javascript_enabled_makers=['eslint']

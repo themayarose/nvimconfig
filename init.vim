@@ -131,9 +131,9 @@ nnoremap _ <C-w><
 nnoremap <C-q> <C-w>q
 
 " Terminal stuff
-tnoremap <Esc> <c-\><c-n><c-w><c-p>
+tnoremap <Esc><Esc> <c-\><c-n><c-w><c-p>
 tnoremap <c-\><c-\> <c-\><c-n>
-tnoremap <c-\><c-n> <Esc>
+" tnoremap <c-\><c-n> <Esc>
 
 au BufWinEnter,WinEnter term://* startinsert
 
@@ -309,6 +309,7 @@ Plug 'tpope/vim-commentary'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
 Plug 'godlygeek/tabular'
+Plug 'easymotion/vim-easymotion'
 
 " Haskell
 Plug 'eagletmt/ghcmod-vim'

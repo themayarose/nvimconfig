@@ -463,6 +463,20 @@ let g:neomake_verbose = 0
 au! BufEnter *.js,*.py,*.hs,*.c,*.cpp,*.rs,*.go Neomake
 au! BufWritePost *.js,*.py,*.hs,*.c,*.cpp,*.rs,*.go Neomake
 
+" EasyMotion
+let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_smartcase = 1
+let g:EasyMotion_startofline = 0
+
+nmap <Leader><Leader>f <Plug>(easymotion-overwin-f)
+nmap <Leader><Leader>2 <Plug>(easymotion-overwin-f2)
+nmap <Leader><Leader>w <Plug>(easymotion-overwin-w)
+nmap <Leader><Leader>l <Plug>(easymotion-overwin-line)
+nmap <Leader><Leader>t <Plug>(easymotion-bd-t)
+
+nmap <Leader><Leader>j <Plug>(easymotion-bd-j)
+nmap <Leader><Leader>k <Plug>(easymotion-bd-k)
+
 " Emmet
 let g:user_emmet_leader_key='<C-m>'
 

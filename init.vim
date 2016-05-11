@@ -334,6 +334,7 @@ Plug 'zchee/deoplete-jedi'
 " C/C++
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'Rip-Rip/clang_complete', { 'do': 'make' }
+" Plug 'zchee/deoplete-clang' -- Activate this!!
 
 " Javascript
 " Plug 'ternjs/tern_for_vim', { 'do': 'rm -rf node_modules && npm install && npm install https://github.com/angelozerr/tern-react' }

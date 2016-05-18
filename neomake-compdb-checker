@@ -1,0 +1,22 @@
+#!/usr/bin/zsh
+
+path_=$(realpath $1)
+compdb=$2/compile_commands.json
+extraargs=$3
+
+count=$(jq 'length' $compdb)
+
+args=""
+
+for index ({0..$(( $count - 1 ))}); do
+    file=$(jq ".[$index].file" $compdb | tr -d '"')
+
+    if [[ "$file" == "$path_" ]]; then
+        args=$(jq ".[$index].command" $compdb | tr -d '"')
+        break
+    fi
+done
+
+eval "$args $extraargs"
+
+echo  "$args $extraargs" >> ./.log

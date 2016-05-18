@@ -1,6 +1,6 @@
 " Priority stuff
 if filereadable(expand("~/.nvimrc_local_prepend"))
-	source ~/.nvimrc_local_prepend
+    source ~/.nvimrc_local_prepend
 endif
 
 " Default options
@@ -46,7 +46,7 @@ let $PATH = expand("~/.cabal/bin") . ':' . $PATH
 
 " Moar windoze
 if !has('win32') && (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8')
-	let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
+    let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
 endif
 set list
 
@@ -54,10 +54,10 @@ set list
 let g:IsOSX = 0
 
 if has("unix")
-	let s:uname = system("echo -n \"$(uname)\"")
-	if s:uname == "Darwin"
-		let g:IsOSX = 1
-	endif
+    let s:uname = system("echo -n \"$(uname)\"")
+    if s:uname == "Darwin"
+        let g:IsOSX = 1
+    endif
 endif
 
 " Essential
@@ -139,25 +139,25 @@ au BufWinEnter,WinEnter term://* startinsert
 
 " Window shortcuts
 if g:IsOSX == 1
-	" On the Mac, C-arrows are mapped to desktop switching. In order to keep
-	" coherence, switch all window shortcuts to Option instead.
-	nnoremap <m-up> <c-w>k
-	nnoremap <m-down> <c-w>j
-	nnoremap <m-left> <c-w>h
-	nnoremap <m-right> <c-w>l
-	nnoremap <m-s-up> <c-w>K
-	nnoremap <m-s-down> <c-w>J
-	nnoremap <m-s-left> <c-w>H
-	nnoremap <m-s-right> <c-w>L
+    " On the Mac, C-arrows are mapped to desktop switching. In order to keep
+    " coherence, switch all window shortcuts to Option instead.
+    nnoremap <m-up> <c-w>k
+    nnoremap <m-down> <c-w>j
+    nnoremap <m-left> <c-w>h
+    nnoremap <m-right> <c-w>l
+    nnoremap <m-s-up> <c-w>K
+    nnoremap <m-s-down> <c-w>J
+    nnoremap <m-s-left> <c-w>H
+    nnoremap <m-s-right> <c-w>L
 else
-	nnoremap <c-up> <c-w>k
-	nnoremap <c-down> <c-w>j
-	nnoremap <c-left> <c-w>h
-	nnoremap <c-right> <c-w>l
-	nnoremap <c-s-up> <c-w>K
-	nnoremap <c-s-down> <c-w>J
-	nnoremap <c-s-left> <c-w>H
-	nnoremap <c-s-right> <c-w>L
+    nnoremap <c-up> <c-w>k
+    nnoremap <c-down> <c-w>j
+    nnoremap <c-left> <c-w>h
+    nnoremap <c-right> <c-w>l
+    nnoremap <c-s-up> <c-w>K
+    nnoremap <c-s-down> <c-w>J
+    nnoremap <c-s-left> <c-w>H
+    nnoremap <c-s-right> <c-w>L
 endif
 
 " File stuff
@@ -188,8 +188,8 @@ nnoremap <PageDown> :bn<CR>
 nnoremap <F11>   :bp<CR>
 nnoremap <F12> :bn<CR>
 if g:IsOSX == 1
-	nnoremap <a-d-left> :bp<cr>
-	nnoremap <a-d-right> :bn<cr>
+    nnoremap <a-d-left> :bp<cr>
+    nnoremap <a-d-right> :bn<cr>
 endif
 
 " Symbol navigation
@@ -232,55 +232,55 @@ nnoremap <silent> <S-Tab> <<
 " Functions
 
 function! GoToBuffer(count)
-	if a:count == 0
-		let buf_nr = InputChar() + 0
-	else
-		let buf_nr = a:count
-	endif
-	execute 'buffer ' . buf_nr
+    if a:count == 0
+        let buf_nr = InputChar() + 0
+    else
+        let buf_nr = a:count
+    endif
+    execute 'buffer ' . buf_nr
 endfunction
 
 function! InputChar()
-	let c = getchar()
-	return type(c) == type(0) ? nr2char(c) : c
+    let c = getchar()
+    return type(c) == type(0) ? nr2char(c) : c
 endfunction
 
 function! WriterBuffer()
-	setlocal formatoptions=ant
-	setlocal textwidth=80
-	setlocal spell
-	setlocal spelllang=pt
+    setlocal formatoptions=ant
+    setlocal textwidth=80
+    setlocal spell
+    setlocal spelllang=pt
 endfunction
 
 function! UnWriterBuffer()
-	setlocal formatoptions=croql
+    setlocal formatoptions=croql
 endfunction
 
 function! InsertModeTab()
-	if pumvisible()
-		" UltiSnips#ExpandSnippet()
-		" if g:ulti_expand_res == 0
-		call feedkeys("\<c-n>")
-		" endif
-	else
-		call UltiSnips#ExpandSnippetOrJump()
+    if pumvisible()
+        " UltiSnips#ExpandSnippet()
+        " if g:ulti_expand_res == 0
+        call feedkeys("\<c-n>")
+        " endif
+    else
+        call UltiSnips#ExpandSnippetOrJump()
 
-		if g:ulti_expand_or_jump_res == 0
-			call feedkeys("\<c-x>\<c-o>")
-		endif
-	endif
+        if g:ulti_expand_or_jump_res == 0
+            call feedkeys("\<c-x>\<c-o>")
+        endif
+    endif
 
-	return ""
+    return ""
 endfunction
 
 function! BackTab()
-	if pumvisible()
-		call feedkeys("\<c-p>")
-	else
-		call UltiSnips#JumpBackwards()
-	endif
+    if pumvisible()
+        call feedkeys("\<c-p>")
+    else
+        call UltiSnips#JumpBackwards()
+    endif
 
-	return ""
+    return ""
 endfunction
 
 " Vim-Plug Plugins
@@ -333,8 +333,8 @@ Plug 'zchee/deoplete-jedi'
 
 " C/C++
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'Rip-Rip/clang_complete', { 'do': 'make' }
-" Plug 'zchee/deoplete-clang' -- Activate this!!
+" Plug 'Rip-Rip/clang_complete', { 'do': 'make' }
+Plug 'zchee/deoplete-clang' " -- Activate this!!
 
 " Javascript
 " Plug 'ternjs/tern_for_vim', { 'do': 'rm -rf node_modules && npm install && npm install https://github.com/angelozerr/tern-react' }
@@ -401,6 +401,8 @@ let g:ycm_key_list_previous_completion = []
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources = {}
 let g:deoplete#sources._ = ['buffer', 'ultisnips', 'file', 'omni']
+let g:deoplete#sources.c = ['buffer', 'ultisnips', 'file', 'clang']
+let g:deoplete#sources.cpp = ['buffer', 'ultisnips', 'file', 'clang']
 let g:deoplete#sources['python'] = ['buffer', 'ultisnips', 'file', 'jedi']
 let g:deoplete#sources.javascript = ['buffer', 'ultisnips', 'file']
 let g:deoplete#sources.jsx = ['buffer', 'ultisnips', 'file']
@@ -422,10 +424,17 @@ let g:jsx_ext_required = 0
 let g:deoplete#sources#jedi#show_docstring = 1
 
 " Clang Completer
-let g:clang_complete_auto = 0
-let g:clang_auto_select = 0
-let g:clang_default_keymappings = 0
-let g:clang_use_library = 1
+" let g:clang_complete_auto = 0
+" let g:clang_auto_select = 0
+" let g:clang_default_keymappings = 0
+" let g:clang_use_library = 1
+
+" Deoplete Clang
+
+let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
+let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
+" let g:deoplete#sources#clang#flags = ["-Wall",]
+let g:deoplete#sources#clang#clang_complete_database = './build/'
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<s-enter>"
@@ -455,11 +464,30 @@ let g:syntastic_check_on_open=1
 " let g:syntastic_haskell_ghc_mod_args='-g -fno-warn-tabs'
 
 " Neomake
+
+let g:neomake_c_compdb_maker = {
+    \ 'exe' : $HOME . '/.config/nvim/neomake-compdb-checker',
+    \ 'args': ['%:p', 'build', '-fsyntax-only -Wall -Wextra'],
+    \ 'errorformat':
+        \ '%-G%f:%s:,' .
+        \ '%f:%l:%c: %trror: %m,' .
+        \ '%f:%l:%c: %tarning: %m,' .
+        \ '%f:%l:%c: %m,'.
+        \ '%f:%l: %trror: %m,'.
+        \ '%f:%l: %tarning: %m,'.
+        \ '%f:%l: %m',
+    \ }
+
+
 let g:neomake_logfile=$HOME . '/neomake.log'
 let g:neomake_open_list=0
 let g:neomake_python_enabled_makers=['pylint']
 let g:neomake_javascript_enabled_makers=['eslint']
-let g:neomake_verbose = 0
+let g:neomake_c_enabled_makers=['compdb', 'clangtidy']
+let g:neomake_c_clangtidy_args=['-p ./build/']
+let g:neomake_cpp_enabled_makers=['compdb', 'clangtidy']
+let g:neomake_cpp_clangtidy_args=['-p ./build/']
+let g:neomake_verbose = 1
 
 au! BufEnter *.js,*.py,*.hs,*.c,*.cpp,*.rs,*.go Neomake
 au! BufWritePost *.js,*.py,*.hs,*.c,*.cpp,*.rs,*.go Neomake
@@ -504,7 +532,7 @@ let g:cpp_experimental_template_highlight = 1
 
 " Tagbar
 if g:IsOSX == 1
-	let g:tagbar_ctags_bin = "/usr/local/bin/ctags"
+    let g:tagbar_ctags_bin = "/usr/local/bin/ctags"
 endif
 
 let g:tagbar_width = 34
@@ -536,7 +564,7 @@ au BufNewFile,BufRead,BufReadPost *.md set filetype=markdown
 au FileType sql set commentstring=--\ %s
 
 if filereadable(expand("~/.nvimrc_local"))
-	source ~/.nvimrc_local
+    source ~/.nvimrc_local
 endif
 
 highlight clear Conceal

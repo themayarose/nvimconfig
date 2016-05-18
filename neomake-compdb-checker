@@ -19,4 +19,4 @@ done
 
 eval "$args $extraargs"
 
-echo  "$args $extraargs" >> ./.log
+# echo  "$args $extraargs" >> ./.log

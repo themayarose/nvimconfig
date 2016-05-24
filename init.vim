@@ -266,7 +266,11 @@ function! InsertModeTab()
         call UltiSnips#ExpandSnippetOrJump()
 
         if g:ulti_expand_or_jump_res == 0
-            call feedkeys("\<c-x>\<c-o>")
+            if (&omnifunc == "")
+                call deoplete#mappings#manual_complete()
+            else
+                call feedkeys("\<c-x>\<c-o>")
+            endif
         endif
     endif
 
@@ -478,6 +482,19 @@ let g:neomake_c_compdb_maker = {
         \ '%f:%l: %m',
     \ }
 
+let g:neomake_cpp_compdb_maker = {
+    \ 'exe' : $HOME . '/.config/nvim/neomake-compdb-checker',
+    \ 'args': ['%:p', 'build', '-fsyntax-only -Wall -Wextra'],
+    \ 'errorformat':
+        \ '%-G%f:%s:,' .
+        \ '%f:%l:%c: %trror: %m,' .
+        \ '%f:%l:%c: %tarning: %m,' .
+        \ '%f:%l:%c: %m,'.
+        \ '%f:%l: %trror: %m,'.
+        \ '%f:%l: %tarning: %m,'.
+        \ '%f:%l: %m',
+    \ }
+
 
 let g:neomake_logfile=$HOME . '/neomake.log'
 let g:neomake_open_list=0
@@ -553,6 +570,9 @@ au BufNewFile,BufRead,BufReadPost *.hs set omnifunc=necoghc#omnifunc
 " CPP
 " au BufNewFile,BufRead,BufReadPost *.cpp set syntax=cpp11_2
 " au BufNewFile,BufRead,BufReadPost *.h set syntax=cpp11_2
+au BufNewFile,BufRead,BufEnter *.cpp set omnifunc=""
+au BufNewFile,BufRead,BufEnter *.c set omnifunc=""
+au BufNewFile,BufRead,BufEnter *.h set omnifunc=""
 
 " HTML
 au BufNewFile,BufRead,BufReadPost *.html set filetype=htmldjango

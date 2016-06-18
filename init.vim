@@ -403,18 +403,6 @@ let g:ycm_key_list_previous_completion = []
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources = {}
-let g:deoplete#sources._ = ['buffer', 'ultisnips', 'file', 'omni']
-let g:deoplete#sources.c = ['buffer', 'ultisnips', 'file', 'clang']
-let g:deoplete#sources.cpp = ['buffer', 'ultisnips', 'file', 'clang']
-let g:deoplete#sources['python'] = ['buffer', 'ultisnips', 'file', 'jedi']
-let g:deoplete#sources.javascript = ['buffer', 'ultisnips', 'file']
-let g:deoplete#sources.jsx = ['buffer', 'ultisnips', 'file']
-let g:deoplete#sources['javascript.jsx'] = ['buffer', 'ultisnips', 'file']
-let g:deoplete#sources.haskell = ['buffer', 'ultisnips', 'file', 'ghc']
-let g:deoplete#sources.rust = ['buffer', 'ultisnips', 'file', 'racer']
-let g:deoplete#sources.text = ['buffer', 'ultisnips', 'file', 'omni', 'dictionary']
-" Tern's perfomance is abysmal.
 
 " JavaScript
 let g:jsx_ext_required = 0

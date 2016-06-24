@@ -64,7 +64,9 @@ endif
 nnoremap j gj
 nnoremap k gk
 nnoremap Y y$
-nnoremap <cr> :
+" nnoremap <cr> :
+nnoremap ; :
+nnoremap : ;
 nnoremap Q  <Nop>
 nnoremap q: <Nop>
 nnoremap q/ <Nop>

@@ -114,17 +114,35 @@ inoremap jj <Esc>
 " inoremap kk <Esc>
 
 " Window stuff
-nnoremap <leader>wh <C-w>h
-nnoremap <leader>wl <C-w>l
-nnoremap <leader>wj <C-w>j
-nnoremap <leader>wk <C-w>k
-nnoremap <leader>wq <C-w>q
-nnoremap <leader>wo <C-w>o
-nnoremap <leader>wr <C-w>r
-nnoremap <leader>wmh <C-w>H
-nnoremap <leader>wml <C-w>L
-nnoremap <leader>wmj <C-w>J
-nnoremap <leader>wmk <C-w>K
+" nnoremap <leader>wh <C-w>h
+" nnoremap <leader>wl <C-w>l
+" nnoremap <leader>wj <C-w>j
+" nnoremap <leader>wk <C-w>k
+" nnoremap <leader>wo <C-w>o
+" nnoremap <leader>wr <C-w>r
+" nnoremap <leader>wmh <C-w>H
+" nnoremap <leader>wml <C-w>L
+" nnoremap <leader>wmj <C-w>J
+" nnoremap <leader>wmk <C-w>K
+nnoremap <leader>a <C-w>h
+nnoremap <leader>w <C-w>k
+nnoremap <leader>s <C-w>j
+nnoremap <leader>d <C-w>l
+nnoremap <leader>k <C-w>h
+nnoremap <leader>o <C-w>k
+nnoremap <leader>l <C-w>j
+nnoremap <leader>; <C-w>l
+nnoremap <leader><left> <C-w>h
+nnoremap <leader><up> <C-w>k
+nnoremap <leader><down> <C-w>j
+nnoremap <leader><right> <C-w>l
+nnoremap <leader>q <C-w>q
+nnoremap <leader>r <C-w>r
+nnoremap <leader>A <C-w>H
+nnoremap <leader>W <C-w>K
+nnoremap <leader>S <C-w>J
+nnoremap <leader>D <C-w>L
+
 nnoremap = <C-w>+
 nnoremap ;; ==
 nnoremap - <C-w>-
@@ -163,12 +181,12 @@ else
 endif
 
 " File stuff
-nnoremap <leader>ff :find *
-nnoremap <leader>fF :find <C-R>=expand('%:h').'/*'<CR>
-nnoremap <leader>fs :sfind *
-nnoremap <leader>fS :sfind <C-R>=expand('%:h').'/*'<CR>
-nnoremap <leader>fv :vert sfind *
-nnoremap <leader>fV :vert sfind <C-R>=expand('%:h').'/*'<CR>
+" nnoremap <leader>ff :find *
+" nnoremap <leader>fF :find <C-R>=expand('%:h').'/*'<CR>
+" nnoremap <leader>fs :sfind *
+" nnoremap <leader>fS :sfind <C-R>=expand('%:h').'/*'<CR>
+" nnoremap <leader>fv :vert sfind *
+" nnoremap <leader>fV :vert sfind <C-R>=expand('%:h').'/*'<CR>
 
 " Buffer stuff
 nnoremap <silent> <leader>bn :new<cr>
@@ -189,14 +207,16 @@ nnoremap <PageUp>   :bp<CR>
 nnoremap <PageDown> :bn<CR>
 nnoremap <F11>   :bp<CR>
 nnoremap <F12> :bn<CR>
+nnoremap <leader>-   :bp<CR>
+nnoremap <leader>= :bn<CR>
 if g:IsOSX == 1
     nnoremap <a-d-left> :bp<cr>
     nnoremap <a-d-right> :bn<cr>
 endif
 
 " Symbol navigation
-nnoremap <silent> <leader>sf :CtrlPFunky<cr>
-nnoremap <silent> <leader>sw :exec 'CtrlPFunky' . expand('<cword>')<cr>
+nnoremap <silent> <leader>ff :CtrlPFunky<cr>
+nnoremap <silent> <leader>fw :exec 'CtrlPFunky' . expand('<cword>')<cr>
 
 " Error management stuff
 nnoremap <silent> <Leader>es :lop<CR>

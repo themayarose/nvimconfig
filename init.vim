@@ -314,13 +314,11 @@ endfunction
 call plug#begin('~/.config/nvim/plugged')
 
 " Vim improvements
-" Plug 'Valloric/YouCompleteMe', { 'do': '/usr/bin/python2 install.py --clang-completer --system-libclang --system-boost' }
 Plug 'Shougo/deoplete.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
-" Plug 'scrooloose/syntastic'
 Plug 'benekastah/neomake'
 Plug 'majutsushi/tagbar'
 Plug 'SirVer/ultisnips'
@@ -342,7 +340,6 @@ Plug 'eagletmt/ghcmod-vim'
 Plug 'dag/vim2hs'
 Plug 'ujihisa/neco-ghc'
 Plug 'Shougo/vimproc', { 'do': 'make -f make_unix.mak' }
-" Plug 'bitc/lushtags'
 Plug 'pbrisbin/vim-syntax-shakespeare'
 
 " Rust
@@ -354,21 +351,17 @@ Plug 'jmcantrell/vim-virtualenv'
 Plug 'bps/vim-textobj-python'
 Plug 'hdima/python-syntax'
 Plug 'hynek/vim-python-pep8-indent'
-" Plug 'davidhalter/jedi-vim'
 Plug 'zchee/deoplete-jedi'
 
 " C/C++
 Plug 'octol/vim-cpp-enhanced-highlight'
-" Plug 'Rip-Rip/clang_complete', { 'do': 'make' }
-Plug 'zchee/deoplete-clang' " -- Activate this!!
+Plug 'zchee/deoplete-clang'
 
 " Javascript
 " Plug 'ternjs/tern_for_vim', { 'do': 'rm -rf node_modules && npm install && npm install https://github.com/angelozerr/tern-react' }
 Plug 'kchmck/vim-coffee-script'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-" Plug 'lukaszkorecki/CoffeeTags'
-" Plug 'othree/yajs.vim'
 
 " Go
 Plug 'fatih/vim-go'
@@ -385,9 +378,6 @@ Plug 'https://github.com/morhetz/gruvbox'
 " Plug 'jscappini/material.vim'
 " Plug 'mkarmona/colorsbox'
 " Plug 'baskerville/bubblegum'
-
-" Deactivated
-" Plug 'dbext.vim'
 
 call plug#end()
 
@@ -430,24 +420,12 @@ let g:deoplete#enable_at_startup = 1
 let g:jsx_ext_required = 0
 
 " Jedi
-" autocmd FileType python setlocal omnifunc=jedi#completions
-" let g:jedi#completions_enabled = 0
-" let g:jedi#auto_vim_configuration = 0
-" let g:jedi#smart_auto_mappings = 0
-" let g:jedi#show_call_signatures = 0
 let g:deoplete#sources#jedi#show_docstring = 1
-
-" Clang Completer
-" let g:clang_complete_auto = 0
-" let g:clang_auto_select = 0
-" let g:clang_default_keymappings = 0
-" let g:clang_use_library = 1
 
 " Deoplete Clang
 
 let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
 let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
-" let g:deoplete#sources#clang#flags = ["-Wall",]
 let g:deoplete#sources#clang#clang_complete_database = './build/'
 
 " UltiSnips
@@ -468,14 +446,6 @@ let g:ghcmod_ghc_options=['--make', '-fno-warn-tabs']
 " Haskell
 let g:haskell_tabular = 1
 let g:necoghc_enable_detailed_browse = 1
-
-" Syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open=1
-" let g:syntastic_python_checker_args="--ignore=E501,E225"
-" let g:syntastic_python_checkers=["pyflakes"]
-" let g:syntastic_javascript_checkers=["eslint"]
-" let g:syntastic_haskell_ghc_mod_args='-g -fno-warn-tabs'
 
 " Neomake
 

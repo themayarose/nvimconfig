@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/usr/bin/env zsh
 
 path_=$(realpath $1)
 compdb=$2/compile_commands.json

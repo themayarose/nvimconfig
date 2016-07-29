@@ -237,14 +237,16 @@ nnoremap <silent> <leader>gps :Git push<cr>
 nnoremap <silent> <leader>gpl :Git pull<cr>
 nnoremap <silent> <leader>gd :Gdiff<cr>
 
-" Tab stuff
-inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<enter>"
+" Enter & Tab stuff
+inoremap <expr> <cr> pumvisible() ? '<c-y>' : (delimitMate#ShouldJump() ? '<c-r>=delimitMate#JumpAny()<cr>' : '<cr>')
+inoremap <m-cr> <c-r>=delimitMate#ExpandReturn()<cr>
 inoremap <silent> <Tab> <c-r>=InsertModeTab()<cr>
 inoremap <silent> <S-Tab> <c-r>=BackTab()<cr>
 snoremap <silent> <Tab> <esc>:call InsertModeTab()<cr>
 snoremap <silent> <S-Tab> <esc>:call BackTab()<cr>
 inoremap <C-Tab> <c-r>="\<Tab>"<cr>
 inoremap <C-S-Tab> <c-r>="\<S-Tab>"<cr>
+inoremap <silent> <c-x><c-x> <c-r>=deoplete#mappings#manual_complete()<cr>
 
 xnoremap <silent> <Tab> >gv
 xnoremap <silent> <S-Tab> <gv

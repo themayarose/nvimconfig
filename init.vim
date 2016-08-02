@@ -106,6 +106,9 @@ nnoremap <silent> <leader>pp :OpenSession<cr>
 nnoremap <silent> <leader>pP :OpenSession!<cr>
 nnoremap <silent> <leader>ps :SaveSession<cr>
 nnoremap <silent> <leader>pf :CtrlP<cr>
+nnoremap <silent> <leader>pt :OpenTabSession<cr>
+nnoremap <silent> <leader>pT :OpenTabSession!<cr>
+nnoremap <silent> <leader>pb :SaveTabSession<cr>
 
 " Where do you go when you have no <Escape>?
 inoremap jj <Esc>

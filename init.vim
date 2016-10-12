@@ -72,6 +72,11 @@ nnoremap q: <Nop>
 nnoremap q/ <Nop>
 nnoremap q? <Nop>
 
+xnoremap ; :
+xnoremap : ;
+vnoremap ; :
+vnoremap : ;
+
 autocmd BufReadPost quickfix nnoremap <buffer> <cr> <cr>
 
 " Goddammned typos.

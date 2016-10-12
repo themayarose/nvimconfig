@@ -339,6 +339,7 @@ Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
 Plug 'godlygeek/tabular'
 Plug 'easymotion/vim-easymotion'
+Plug 'wellle/targets.vim'
 
 " Haskell
 Plug 'eagletmt/ghcmod-vim'

@@ -38,6 +38,7 @@ set nohlsearch
 set background=dark
 " set t_Co=256
 set title
+set termguicolors
 
 syntax on
 filetype off

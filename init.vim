@@ -27,6 +27,8 @@ set nu
 set completeopt-=preview
 set foldlevel=99
 set colorcolumn=80
+set textwidth=80
+set formatoptions=jcroql
 set wildmenu
 set autoread
 set directory=~/.config/nvim/swap
@@ -72,6 +74,11 @@ nnoremap Q  <Nop>
 nnoremap q: <Nop>
 nnoremap q/ <Nop>
 nnoremap q? <Nop>
+
+xnoremap ; :
+xnoremap : ;
+vnoremap ; :
+vnoremap : ;
 
 autocmd BufReadPost quickfix nnoremap <buffer> <cr> <cr>
 
@@ -229,11 +236,8 @@ nnoremap <silent> <Leader>en :lnext<CR>
 nnoremap <silent> <Leader>ep :lprev<CR>
 
 " Writing stuff
-nnoremap <silent> <leader>bW+ :<c-u>exec WriterBuffer()<cr>
-nnoremap <silent> <leader>bW_ :<c-u>exec UnWriterBuffer()<cr>
-" nnoremap <silent> <leader>ss ea<c-x><c-s>
-nnoremap <silent> <leader>bWA+ gggqG
-nnoremap <silent> <leader>bWA_ vipJ
+nnoremap <silent> <leader>bww :<c-u>exec WriterBuffer()<cr>
+nnoremap <silent> <leader>bwc :<c-u>exec UnWriterBuffer()<cr>
 
 " Git stuff
 nnoremap <silent> <leader>gs :Gstatus<cr>
@@ -275,13 +279,14 @@ endfunction
 
 function! WriterBuffer()
     setlocal formatoptions=ant
-    setlocal textwidth=80
     setlocal spell
     setlocal spelllang=pt
 endfunction
 
 function! UnWriterBuffer()
-    setlocal formatoptions=croql
+    setlocal formatoptions=jcroql
+    setlocal nospell
+    setlocal spelllang=en
 endfunction
 
 function! InsertModeTab()
@@ -340,6 +345,7 @@ Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
 Plug 'godlygeek/tabular'
 Plug 'easymotion/vim-easymotion'
+Plug 'wellle/targets.vim'
 
 " Haskell
 Plug 'eagletmt/ghcmod-vim'

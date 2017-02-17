@@ -359,7 +359,7 @@ Plug 'racer-rust/vim-racer'
 Plug 'rust-lang/rust.vim'
 
 " Python
-Plug 'jmcantrell/vim-virtualenv'
+" Plug 'jmcantrell/vim-virtualenv'
 Plug 'bps/vim-textobj-python'
 Plug 'hdima/python-syntax'
 Plug 'hynek/vim-python-pep8-indent'
@@ -391,6 +391,9 @@ Plug 'https://github.com/morhetz/gruvbox'
 " Plug 'mkarmona/colorsbox'
 " Plug 'baskerville/bubblegum'
 
+" GUI
+Plug 'equalsraf/neovim-qt', { 'rtp': 'src/gui/runtime' }
+
 call plug#end()
 
 " Options for plugins
@@ -401,7 +404,7 @@ let g:ctrlp_open_multiple_files = 'i'
 let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_extensions = ['funky']
 let g:ctrlp_funky_syntax_highlight = 1
-let g:ctrlp_custom_ignore = { 'dir':  '\v([\/]\.(git|hg|svn)|node_modules|jspm_packages|bower_components|[_]?build|\.cabal_sandbox)$' }
+let g:ctrlp_custom_ignore = { 'dir':  '\v([\/]\.(git|hg|svn)|node_modules|jspm_packages|bower_components|[_]?build|\.cabal_sandbox|\.egg-info|collected)$' }
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1

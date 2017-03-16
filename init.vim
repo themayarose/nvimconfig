@@ -433,6 +433,7 @@ let g:deoplete#enable_at_startup = 1
 
 " JavaScript
 let g:jsx_ext_required = 0
+let g:javascript_plugin_flow = 1
 
 " Jedi
 let g:deoplete#sources#jedi#show_docstring = 1
@@ -490,19 +491,28 @@ let g:neomake_cpp_compdb_maker = {
         \ '%f:%l: %m',
     \ }
 
+let g:neomake_jsx_flow_maker = {
+    \ 'exe': '/usr/bin/flow',
+    \ 'args': ['--from=vim', '--show-all-errors'],
+    \ 'errorformat': '%EFile "%f"\, line %l\, characters %c-%m,%C%m,%Z%m',
+    \ 'postprocess': function('neomake#makers#ft#javascript#FlowProcess')
+    \ }
 
 let g:neomake_logfile=$HOME . '/neomake.log'
 let g:neomake_open_list=0
 let g:neomake_python_enabled_makers=['pylint']
-let g:neomake_javascript_enabled_makers=['eslint']
+let g:neomake_javascript_enabled_makers=['eslint',  'flow']
+let g:neomake_jsx_enabled_makers=['flow', 'eslint']
 let g:neomake_c_enabled_makers=['compdb', 'clangtidy']
 let g:neomake_c_clangtidy_args=['-p ./build/']
 let g:neomake_cpp_enabled_makers=['compdb', 'clangtidy']
 let g:neomake_cpp_clangtidy_args=['-p ./build/']
 let g:neomake_verbose = 1
 
-au! BufEnter *.js,*.py,*.hs,*.c,*.cpp,*.rs,*.go Neomake
-au! BufWritePost *.js,*.py,*.hs,*.c,*.cpp,*.rs,*.go Neomake
+au! BufEnter *.py,*.hs,*.c,*.cpp,*.rs,*.go Neomake
+au! BufWritePost *.py,*.hs,*.c,*.cpp,*.rs,*.go Neomake
+au! BufEnter *.js,*.jsx Neomake
+au! BufWritePost *.js,*.jsx Neomake
 
 " EasyMotion
 let g:EasyMotion_do_mapping = 0

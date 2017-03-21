@@ -322,7 +322,9 @@ endfunction
 
 " Vim-Plug Plugins
 
-call plug#begin('~/.config/nvim/plugged')
+let g:plugin_path = '~/.config/nvim/plugged'
+
+call plug#begin(g:plugin_path)
 
 " Vim improvements
 Plug 'Shougo/deoplete.nvim'
@@ -374,6 +376,7 @@ Plug 'zchee/deoplete-clang'
 Plug 'kchmck/vim-coffee-script'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'ryyppy/flow-vim-quickfix', {'on': [], 'do': 'yarn'}
 
 " Go
 Plug 'fatih/vim-go'
@@ -478,41 +481,33 @@ let g:neomake_c_compdb_maker = {
         \ '%f:%l: %m',
     \ }
 
-let g:neomake_cpp_compdb_maker = {
-    \ 'exe' : $HOME . '/.config/nvim/neomake-compdb-checker',
-    \ 'args': ['%:p', 'build', '-fsyntax-only -Wall -Wextra'],
-    \ 'errorformat':
-        \ '%-G%f:%s:,' .
-        \ '%f:%l:%c: %trror: %m,' .
-        \ '%f:%l:%c: %tarning: %m,' .
-        \ '%f:%l:%c: %m,'.
-        \ '%f:%l: %trror: %m,'.
-        \ '%f:%l: %tarning: %m,'.
-        \ '%f:%l: %m',
+let g:neomake_cpp_compdb_maker = g:neomake_c_compdb_maker
+
+let s:flow_vim_quickfix_path = g:plugin_path .
+            \ '/flow-vim-quickfix/bin/flow-vim-quickfix'
+
+let g:neomake_javascript_flowjson_maker = {
+    \ 'exe': '/usr/bin/sh',
+    \ 'args': ['-c', '/usr/bin/flow --json 2> /dev/null | ' .
+    \ s:flow_vim_quickfix_path],
+    \ 'errorformat': '%E%f:%l:%c\,%n: %m',
+    \ 'cwd': '%:p:h',
     \ }
 
-let g:neomake_jsx_flow_maker = {
-    \ 'exe': '/usr/bin/flow',
-    \ 'args': ['--from=vim', '--show-all-errors'],
-    \ 'errorformat': '%EFile "%f"\, line %l\, characters %c-%m,%C%m,%Z%m',
-    \ 'postprocess': function('neomake#makers#ft#javascript#FlowProcess')
-    \ }
+let g:neomake_jsx_flowjson_maker = g:neomake_javascript_flowjson_maker
 
 let g:neomake_logfile=$HOME . '/neomake.log'
 let g:neomake_open_list=0
 let g:neomake_python_enabled_makers=['pylint']
-let g:neomake_javascript_enabled_makers=['eslint',  'flow']
-let g:neomake_jsx_enabled_makers=['flow', 'eslint']
+let g:neomake_javascript_enabled_makers=['eslint', 'flowjson']
+let g:neomake_jsx_enabled_makers=['eslint', 'flowjson']
 let g:neomake_c_enabled_makers=['compdb', 'clangtidy']
 let g:neomake_c_clangtidy_args=['-p ./build/']
 let g:neomake_cpp_enabled_makers=['compdb', 'clangtidy']
 let g:neomake_cpp_clangtidy_args=['-p ./build/']
 let g:neomake_verbose = 1
 
-au! BufEnter *.py,*.hs,*.c,*.cpp,*.rs,*.go Neomake
-au! BufWritePost *.py,*.hs,*.c,*.cpp,*.rs,*.go Neomake
-au! BufEnter *.js,*.jsx Neomake
-au! BufWritePost *.js,*.jsx Neomake
+au! BufEnter,BufWritePost *.js,*.jsx,*.py,*.hs,*.c,*.cpp,*.rs,*.go Neomake
 
 " EasyMotion
 let g:EasyMotion_do_mapping = 0

@@ -96,18 +96,18 @@ noremap <F4> :NERDTreeMirror<cr>
 noremap <F2> :TagbarToggle<cr>
 
 " Leader-based tab stuff can stay... for now.
-nnoremap <leader>th :tabp<cr>
-nnoremap <leader>tl :tabn<cr>
-nnoremap <leader>tj :tabr<cr>
-nnoremap <leader>tk :tabl<cr>
-nnoremap <leader>tmh :tabm -1<cr>
-nnoremap <leader>tml :tabm +1<cr>
-nnoremap <leader>tmj :tabm 0<cr>
-nnoremap <leader>tmk :tabm<cr>
-nnoremap <leader>tn :tabnew<cr>
-nnoremap <leader>tq :tabclose<cr>
-nnoremap <leader>] :tabn<cr>
-nnoremap <leader>[ :tabp<cr>
+nnoremap <silent> <leader>th :tabp<cr>
+nnoremap <silent> <leader>tl :tabn<cr>
+nnoremap <silent> <leader>tj :tabr<cr>
+nnoremap <silent> <leader>tk :tabl<cr>
+nnoremap <silent> <leader>tmh :tabm -1<cr>
+nnoremap <silent> <leader>tml :tabm +1<cr>
+nnoremap <silent> <leader>tmj :tabm 0<cr>
+nnoremap <silent> <leader>tmk :tabm<cr>
+nnoremap <silent> <leader>tn :tabnew<cr>
+nnoremap <silent> <leader>tq :tabclose<cr>
+nnoremap <silent> <leader>] :tabn<cr>
+nnoremap <silent> <leader>[ :tabp<cr>
 
 " Projects
 nnoremap <silent> <leader>pp :OpenSession<cr>
@@ -135,24 +135,24 @@ inoremap jj <Esc>
 " nnoremap <leader>wml <C-w>L
 " nnoremap <leader>wmj <C-w>J
 " nnoremap <leader>wmk <C-w>K
-nnoremap <leader>a <C-w>h
-nnoremap <leader>w <C-w>k
-nnoremap <leader>s <C-w>j
-nnoremap <leader>d <C-w>l
-nnoremap <leader>k <C-w>h
-nnoremap <leader>o <C-w>k
-nnoremap <leader>l <C-w>j
-nnoremap <leader>; <C-w>l
-nnoremap <leader><left> <C-w>h
-nnoremap <leader><up> <C-w>k
-nnoremap <leader><down> <C-w>j
-nnoremap <leader><right> <C-w>l
-nnoremap <leader>q <C-w>q
-nnoremap <leader>r <C-w>r
-nnoremap <leader>A <C-w>H
-nnoremap <leader>W <C-w>K
-nnoremap <leader>S <C-w>J
-nnoremap <leader>D <C-w>L
+nnoremap <silent> <leader>a <C-w>h
+nnoremap <silent> <leader>w <C-w>k
+nnoremap <silent> <leader>s <C-w>j
+nnoremap <silent> <leader>d <C-w>l
+nnoremap <silent> <leader>k <C-w>h
+nnoremap <silent> <leader>o <C-w>k
+nnoremap <silent> <leader>l <C-w>j
+nnoremap <silent> <leader>; <C-w>l
+nnoremap <silent> <leader><left> <C-w>h
+nnoremap <silent> <leader><up> <C-w>k
+nnoremap <silent> <leader><down> <C-w>j
+nnoremap <silent> <leader><right> <C-w>l
+nnoremap <silent> <leader>q <C-w>q
+nnoremap <silent> <leader>r <C-w>r
+nnoremap <silent> <leader>A <C-w>H
+nnoremap <silent> <leader>W <C-w>K
+nnoremap <silent> <leader>S <C-w>J
+nnoremap <silent> <leader>D <C-w>L
 
 nnoremap = <C-w>+
 nnoremap ;; ==
@@ -208,18 +208,18 @@ nnoremap <silent> <leader>bq :b #<cr>:bd #<cr>
 nnoremap <silent> <leader>bs :b #<cr>
 nnoremap <silent> <leader>bg :<c-u>exec GoToBuffer(v:count)<cr>
 nnoremap <silent> <leader>bf :CtrlPBuffer<cr>
-nnoremap <leader>bl :bn<cr>
-nnoremap <leader>bh :bp<cr>
-nnoremap <leader>bj :bl<cr>
-nnoremap <leader>bk :bf<cr>
+nnoremap <silent> <leader>bl :bn<cr>
+nnoremap <silent> <leader>bh :bp<cr>
+nnoremap <silent> <leader>bj :bl<cr>
+nnoremap <silent> <leader>bk :bf<cr>
 
 " Buffer shortcuts
-nnoremap <PageUp>   :bp<CR>
-nnoremap <PageDown> :bn<CR>
-nnoremap <F11>   :bp<CR>
-nnoremap <F12> :bn<CR>
-nnoremap <leader>-   :bp<CR>
-nnoremap <leader>= :bn<CR>
+nnoremap <silent> <PageUp>   :bp<CR>
+nnoremap <silent> <PageDown> :bn<CR>
+nnoremap <silent> <F11>   :bp<CR>
+nnoremap <silent> <F12> :bn<CR>
+nnoremap <silent> <leader>-   :bp<CR>
+nnoremap <silent> <leader>= :bn<CR>
 if g:IsOSX == 1
     nnoremap <a-d-left> :bp<cr>
     nnoremap <a-d-right> :bn<cr>
@@ -352,7 +352,7 @@ Plug 'wellle/targets.vim'
 " Haskell
 Plug 'eagletmt/ghcmod-vim'
 Plug 'dag/vim2hs'
-Plug 'ujihisa/neco-ghc'
+Plug 'ugopozo/neco-ghc'
 Plug 'Shougo/vimproc', { 'do': 'make -f make_unix.mak' }
 Plug 'pbrisbin/vim-syntax-shakespeare'
 
@@ -465,6 +465,7 @@ let g:ghcmod_ghc_options=['--make', '-fno-warn-tabs']
 " Haskell
 let g:haskell_tabular = 1
 let g:necoghc_enable_detailed_browse = 1
+let g:necoghc_use_stack = 1
 
 " Neomake
 
@@ -514,14 +515,14 @@ let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_startofline = 0
 
-nmap <Leader><Leader>f <Plug>(easymotion-overwin-f)
-nmap <Leader><Leader>2 <Plug>(easymotion-overwin-f2)
-nmap <Leader><Leader>w <Plug>(easymotion-overwin-w)
-nmap <Leader><Leader>l <Plug>(easymotion-overwin-line)
-nmap <Leader><Leader>t <Plug>(easymotion-bd-t)
+nnoremap <Leader><Leader>f <Plug>(easymotion-overwin-f)
+nnoremap <Leader><Leader>2 <Plug>(easymotion-overwin-f2)
+nnoremap <Leader><Leader>w <Plug>(easymotion-overwin-w)
+nnoremap <Leader><Leader>l <Plug>(easymotion-overwin-line)
+nnoremap <Leader><Leader>t <Plug>(easymotion-bd-t)
 
-nmap <Leader><Leader>j <Plug>(easymotion-bd-j)
-nmap <Leader><Leader>k <Plug>(easymotion-bd-k)
+nnoremap <Leader><Leader>j <Plug>(easymotion-bd-j)
+nnoremap <Leader><Leader>k <Plug>(easymotion-bd-k)
 
 " Emmet
 let g:user_emmet_leader_key='<C-m>'

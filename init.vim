@@ -352,7 +352,7 @@ Plug 'wellle/targets.vim'
 " Haskell
 Plug 'eagletmt/ghcmod-vim'
 Plug 'dag/vim2hs'
-Plug 'ugopozo/neco-ghc'
+Plug 'eagletmt/neco-ghc'
 Plug 'Shougo/vimproc', { 'do': 'make -f make_unix.mak' }
 Plug 'pbrisbin/vim-syntax-shakespeare'
 

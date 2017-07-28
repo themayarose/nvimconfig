@@ -203,6 +203,7 @@ endif
 nnoremap <silent> <leader>bn :new<cr>
 " buffer quit - first go to last buffer, then unload the buffer you were on
 nnoremap <silent> <leader>bq :b #<cr>:bd #<cr>
+nnoremap <silent> <leader>bw :b #<cr>:bw #<cr>
 " buffer destroy - destroy this buffer altogether (bad idea?)
 " nnoremap <silent> <leader>bd :bd<cr>
 nnoremap <silent> <leader>bs :b #<cr>
@@ -515,14 +516,14 @@ let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_startofline = 0
 
-nnoremap <Leader><Leader>f <Plug>(easymotion-overwin-f)
-nnoremap <Leader><Leader>2 <Plug>(easymotion-overwin-f2)
-nnoremap <Leader><Leader>w <Plug>(easymotion-overwin-w)
-nnoremap <Leader><Leader>l <Plug>(easymotion-overwin-line)
-nnoremap <Leader><Leader>t <Plug>(easymotion-bd-t)
+nmap <Leader><Leader>f <Plug>(easymotion-overwin-f)
+nmap <Leader><Leader>2 <Plug>(easymotion-overwin-f2)
+nmap <Leader><Leader>w <Plug>(easymotion-overwin-w)
+nmap <Leader><Leader>l <Plug>(easymotion-overwin-line)
+nmap <Leader><Leader>t <Plug>(easymotion-bd-t)
 
-nnoremap <Leader><Leader>j <Plug>(easymotion-bd-j)
-nnoremap <Leader><Leader>k <Plug>(easymotion-bd-k)
+" nmap <Leader><Leader>j <Plug>(easymotion-bd-j)
+" nmap <Leader><Leader>k <Plug>(easymotion-bd-k)
 
 " Emmet
 let g:user_emmet_leader_key='<C-m>'

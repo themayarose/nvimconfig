@@ -113,7 +113,6 @@ nnoremap <silent> <leader>[ :tabp<cr>
 nnoremap <silent> <leader>pp :OpenSession<cr>
 nnoremap <silent> <leader>pP :OpenSession!<cr>
 nnoremap <silent> <leader>ps :SaveSession<cr>
-nnoremap <silent> <leader>pf :CtrlP<cr>
 nnoremap <silent> <leader>pt :OpenTabSession<cr>
 nnoremap <silent> <leader>pT :OpenTabSession!<cr>
 nnoremap <silent> <leader>pb :SaveTabSession<cr>
@@ -208,7 +207,6 @@ nnoremap <silent> <leader>bw :b #<cr>:bw #<cr>
 " nnoremap <silent> <leader>bd :bd<cr>
 nnoremap <silent> <leader>bs :b #<cr>
 nnoremap <silent> <leader>bg :<c-u>exec GoToBuffer(v:count)<cr>
-nnoremap <silent> <leader>bf :CtrlPBuffer<cr>
 nnoremap <silent> <leader>bl :bn<cr>
 nnoremap <silent> <leader>bh :bp<cr>
 nnoremap <silent> <leader>bj :bl<cr>
@@ -226,9 +224,16 @@ if g:IsOSX == 1
     nnoremap <a-d-right> :bn<cr>
 endif
 
-" Symbol navigation
-nnoremap <silent> <leader>ff :CtrlPFunky<cr>
-nnoremap <silent> <leader>fw :exec 'CtrlPFunky' . expand('<cword>')<cr>
+" Fuzzy navigation
+" nnoremap <silent> <leader>0 :CtrlPFunky<cr>
+" nnoremap <silent> <leader>fw :exec 'CtrlPFunky' . expand('<cword>')<cr>
+" nnoremap <silent> <leader>pf :CtrlP<cr>
+" nnoremap <silent> <leader>bf :CtrlPBuffer<cr>
+
+nnoremap <silent> <leader>0 :BTags<cr>
+" nnoremap <silent> <leader>fw :exec 'CtrlPFunky' . expand('<cword>')<cr>
+nnoremap <silent> <leader>pf :Files<cr>
+nnoremap <silent> <leader>bf :Buffers<cr>
 
 " Error management stuff
 nnoremap <silent> <Leader>es :lop<CR>
@@ -331,7 +336,6 @@ call plug#begin(g:plugin_path)
 Plug 'Shougo/deoplete.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'benekastah/neomake'
 Plug 'majutsushi/tagbar'
@@ -349,6 +353,10 @@ Plug 'kana/vim-textobj-indent'
 Plug 'godlygeek/tabular'
 Plug 'easymotion/vim-easymotion'
 Plug 'wellle/targets.vim'
+
+" Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " Haskell
 Plug 'eagletmt/ghcmod-vim'
@@ -383,7 +391,7 @@ Plug 'ryyppy/flow-vim-quickfix', {'on': [], 'do': 'yarn'}
 Plug 'fatih/vim-go'
 
 " Colorschemes
-Plug 'tacahiroy/ctrlp-funky'
+" Plug 'tacahiroy/ctrlp-funky'
 " Plug 'altercation/vim-colors-solarized'
 " Plug 'frankier/neovim-colors-solarized-truecolor-only'
 " Plug 'junegunn/seoul256.vim'
@@ -409,6 +417,13 @@ let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_extensions = ['funky']
 let g:ctrlp_funky_syntax_highlight = 1
 let g:ctrlp_custom_ignore = { 'dir':  '\v([\/]\.(git|hg|svn)|node_modules|jspm_packages|bower_components|[_]?build|\.cabal_sandbox|\.egg-info|collected)$' }
+
+" FZF
+
+let g:fzf_action = {
+    \ 'ctrl-t': 'tab split',
+    \ 'ctrl-h': 'split',
+    \ 'ctrl-v': 'vsplit' }
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1

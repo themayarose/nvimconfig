@@ -333,7 +333,7 @@ let g:plugin_path = '~/.config/nvim/plugged'
 call plug#begin(g:plugin_path)
 
 " Vim improvements
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
@@ -353,6 +353,7 @@ Plug 'kana/vim-textobj-indent'
 Plug 'godlygeek/tabular'
 Plug 'easymotion/vim-easymotion'
 Plug 'wellle/targets.vim'
+Plug 'Shougo/echodoc.vim'
 
 " Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -366,15 +367,16 @@ Plug 'Shougo/vimproc', { 'do': 'make -f make_unix.mak' }
 Plug 'pbrisbin/vim-syntax-shakespeare'
 
 " Rust
-Plug 'racer-rust/vim-racer'
+" Plug 'racer-rust/vim-racer'
 Plug 'rust-lang/rust.vim'
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 
 " Python
 " Plug 'jmcantrell/vim-virtualenv'
 Plug 'bps/vim-textobj-python'
 Plug 'hdima/python-syntax'
 Plug 'hynek/vim-python-pep8-indent'
-Plug 'zchee/deoplete-jedi'
+" Plug 'zchee/deoplete-jedi'
 
 " C/C++
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -384,7 +386,8 @@ Plug 'zchee/deoplete-clang'
 " Plug 'ternjs/tern_for_vim', { 'do': 'rm -rf node_modules && npm install && npm install https://github.com/angelozerr/tern-react' }
 Plug 'kchmck/vim-coffee-script'
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+" Plug 'mxw/vim-jsx'
+Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'ryyppy/flow-vim-quickfix', {'on': [], 'do': 'yarn'}
 
 " Go
@@ -453,6 +456,7 @@ let g:deoplete#enable_at_startup = 1
 " JavaScript
 let g:jsx_ext_required = 0
 let g:javascript_plugin_flow = 1
+let g:vim_jsx_pretty_colorful_config = 1
 
 " Jedi
 let g:deoplete#sources#jedi#show_docstring = 1
@@ -516,6 +520,7 @@ let g:neomake_jsx_flowjson_maker = g:neomake_javascript_flowjson_maker
 let g:neomake_logfile=$HOME . '/neomake.log'
 let g:neomake_open_list=0
 let g:neomake_python_enabled_makers=['pylint']
+" let g:neomake_rust_enabled_makers=['clippy']
 let g:neomake_javascript_enabled_makers=['eslint', 'flowjson']
 let g:neomake_jsx_enabled_makers=['eslint', 'flowjson']
 let g:neomake_c_enabled_makers=['compdb', 'clangtidy']
@@ -572,6 +577,17 @@ endif
 let g:tagbar_width = 34
 let g:tagbar_sort = 0
 
+" LanguageClient
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'python': ['pyls'],
+    \ 'javascript': ['javascript-typescript-langserver'],
+    \ 'javascript-jsx': ['javascript-typescript-langserver'],
+    \ 'jsx': ['javascript-typescript-langserver'],
+    \ }
+
+let g:LanguageClient_autoStart = 1
 
 " Autocommands
 

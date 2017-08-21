@@ -391,16 +391,16 @@ Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'ryyppy/flow-vim-quickfix', {'on': [], 'do': 'yarn'}
 
 " Go
-Plug 'fatih/vim-go'
+" Plug 'fatih/vim-go'
 
 " Colorschemes
 " Plug 'tacahiroy/ctrlp-funky'
 " Plug 'altercation/vim-colors-solarized'
 " Plug 'frankier/neovim-colors-solarized-truecolor-only'
 " Plug 'junegunn/seoul256.vim'
-Plug 'mkarmona/materialbox'
-Plug 'xero/sourcerer.vim'
-Plug 'fent/vim-frozen'
+" Plug 'mkarmona/materialbox'
+" Plug 'xero/sourcerer.vim'
+" Plug 'fent/vim-frozen'
 Plug 'https://github.com/morhetz/gruvbox'
 " Plug 'jscappini/material.vim'
 " Plug 'mkarmona/colorsbox'

@@ -376,7 +376,7 @@ Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 Plug 'bps/vim-textobj-python'
 Plug 'hdima/python-syntax'
 Plug 'hynek/vim-python-pep8-indent'
-" Plug 'zchee/deoplete-jedi'
+Plug 'zchee/deoplete-jedi'
 
 " C/C++
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -581,11 +581,11 @@ let g:tagbar_sort = 0
 
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'python': ['pyls'],
     \ 'javascript': ['javascript-typescript-langserver'],
     \ 'javascript-jsx': ['javascript-typescript-langserver'],
     \ 'jsx': ['javascript-typescript-langserver'],
     \ }
+    "\ 'python': ['pyls'],
 
 let g:LanguageClient_autoStart = 1
 

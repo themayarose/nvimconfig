@@ -354,6 +354,7 @@ Plug 'godlygeek/tabular'
 Plug 'easymotion/vim-easymotion'
 Plug 'wellle/targets.vim'
 Plug 'Shougo/echodoc.vim'
+Plug 'terryma/vim-multiple-cursors'
 
 " Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -425,7 +426,7 @@ let g:ctrlp_custom_ignore = { 'dir':  '\v([\/]\.(git|hg|svn)|node_modules|jspm_p
 
 let g:fzf_action = {
     \ 'ctrl-t': 'tab split',
-    \ 'ctrl-h': 'split',
+    \ 'ctrl-x': 'split',
     \ 'ctrl-v': 'vsplit' }
 
 " Airline

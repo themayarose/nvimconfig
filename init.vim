@@ -387,6 +387,7 @@ Plug 'zchee/deoplete-clang'
 " Plug 'ternjs/tern_for_vim', { 'do': 'rm -rf node_modules && npm install && npm install https://github.com/angelozerr/tern-react' }
 Plug 'kchmck/vim-coffee-script'
 Plug 'pangloss/vim-javascript'
+Plug 'jparise/vim-graphql'
 " Plug 'mxw/vim-jsx'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'ryyppy/flow-vim-quickfix', {'on': [], 'do': 'yarn'}
@@ -440,11 +441,6 @@ let g:airline#extensions#tabline#show_buffers = 2
 " delimitMate
 " let g:delimitMate_tab2exit = 0
 
-
-" Tern
-let g:tern_show_signature_in_pum = 1
-let g:tern_show_argument_hints = 'on_move'
-let $NODE_PATH = 'jspm_packages/npm:src:' . $NODE_PATH
 
 " YCM
 let g:ycm_key_invoke_completion = "<c-enter>"
@@ -582,10 +578,10 @@ let g:tagbar_sort = 0
 
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'javascript': ['javascript-typescript-langserver'],
-    \ 'javascript-jsx': ['javascript-typescript-langserver'],
-    \ 'jsx': ['javascript-typescript-langserver'],
     \ }
+    " \ 'javascript': ['javascript-typescript-langserver'],
+    " \ 'javascript-jsx': ['javascript-typescript-langserver'],
+    " \ 'jsx': ['javascript-typescript-langserver'],
     "\ 'python': ['pyls'],
 
 let g:LanguageClient_autoStart = 1
@@ -616,6 +612,10 @@ au BufNewFile,BufRead,BufReadPost *.md set filetype=markdown
 
 " SQL
 au FileType sql set commentstring=--\ %s
+
+" Javascript
+au BufNewFile,BufRead,BufReadPost *.js let b:neomake_jsx_eslint_exe = getcwd() .'/node_modules/.bin/eslint'
+au BufNewFile,BufRead,BufReadPost *.js let b:neomake_javascript_eslint_exe = getcwd() .'/node_modules/.bin/eslint'
 
 if filereadable(expand("~/.nvimrc_local"))
     source ~/.nvimrc_local

@@ -1,39 +1,46 @@
+
+" MIT License. Copyright (c) 2013-2016 Bailey Ling.
+
+scriptencoding utf-8
+
+let s:fnamecollapse = get(g:, 'airline#extensions#tabline#fnamecollapse', 1)
+let s:fnametruncate = get(g:, 'airline#extensions#tabline#fnametruncate', 0)
+let s:buf_nr_format = get(g:, 'airline#extensions#tabline#buffer_nr_format', '%s: ')
+let s:buf_nr_show = get(g:, 'airline#extensions#tabline#buffer_nr_show', 0)
+let s:buf_modified_symbol = g:airline_symbols.modified
+
 function! airline#extensions#tabline#formatters#custom_format#format(bufnr, buffers)
-	let fmod = get(g:, 'airline#extensions#tabline#fnamemod', ':~:.')
-	let fnamecollapse = get(g:, 'airline#extensions#tabline#fnamecollapse', 1)
-	let _ = ''
+    let fmod = get(g:, 'airline#extensions#tabline#fnamemod', ':~:.')
+    let _ = ''
 
-	let name = bufname(a:bufnr)
+    let name = bufname(a:bufnr)
+    if empty(name)
+        let _ .= '[No Name]'
+    else
+        if s:fnamecollapse
+            let _ .= substitute(fnamemodify(name, fmod), '\v\w\zs.{-}\ze(\\|/)', '', 'g')
+        else
+            let _ .= fnamemodify(name, fmod)
+        endif
+        if a:bufnr != bufnr('%') && s:fnametruncate && strlen(_) > s:fnametruncate
+            let _ = strpart(_, 0, s:fnametruncate)
+        endif
+    endif
 
-	if empty(name)
-		let _ .= '[No Name]'
-	else
-		if fnamecollapse
-			let _ .= substitute(fnamemodify(name, fmod), '\v\w\zs.{-}\ze(\\|/)', '', 'g')
-		else
-			let _ .= fnamemodify(name, fmod)
-		endif
-	endif
-
-	return airline#extensions#tabline#formatters#custom_format#wrap_name(a:bufnr, _)
+    return airline#extensions#tabline#formatters#custom_format#wrap_name(a:bufnr, _)
 endfunction
 
 function! airline#extensions#tabline#formatters#custom_format#wrap_name(bufnr, buffer_name)
-	let buf_nr_format = get(g:, 'airline#extensions#tabline#buffer_nr_format', '%s: ')
-	let buf_nr_show = get(g:, 'airline#extensions#tabline#buffer_nr_show', 0)
-	let buf_modified_symbol = g:airline_symbols.modified
+    let _ = s:buf_nr_show ? printf(s:buf_nr_format, a:bufnr) : ''
+    let _ .= substitute(a:buffer_name, '\\', '/', 'g')
 
-	let _ = buf_nr_show ? printf(buf_nr_format, a:bufnr) : ''
-	let _ .= substitute(a:buffer_name, '\\', '/', 'g')
+    if getbufvar(a:bufnr, '&modified') == 1
+        let _ .= s:buf_modified_symbol
+    endif
 
-	if getbufvar(a:bufnr, '&modified') == 1
-		let _ .= buf_modified_symbol
-	endif
-
-	if a:bufnr == bufnr('#')
-		let _ .= "#"
-	endif
-	return _
+    if a:bufnr == bufnr('#')
+        let _ .= "#"
+    endif
+    return _
 endfunction
-
 

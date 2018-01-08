@@ -26,9 +26,7 @@ runtime init/mappings.vim
 
 let g:plugin_path = '~/.config/nvim/plugged'
 
-if !exists('g:GtkGuiLoaded')
-    runtime init/plugins.vim
-endif
+runtime init/plugins.vim
 
 runtime init/plugins-opts.vim
 

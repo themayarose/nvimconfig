@@ -124,7 +124,7 @@ if g:IsOSX == 1
     let g:tagbar_ctags_bin = "/usr/local/bin/ctags"
 endif
 
-let g:tagbar_width = 34
+let g:tagbar_width = 33
 let g:tagbar_sort = 0
 
 " LanguageClient

@@ -1,4 +1,6 @@
 " Essential
+
+let g:necoghc_debug = 1
 nnoremap j gj
 nnoremap k gk
 nnoremap Y y$
@@ -63,8 +65,8 @@ nnoremap <silent> <leader>D <C-w>L
 
 nnoremap + <C-w>+
 nnoremap - <C-w>-
-nnoremap <s-+> <C-w>>
-nnoremap <s--> <C-w><
+nnoremap <c-+> <C-w>>
+nnoremap <c--> <C-w><
 
 " Terminal stuff
 tnoremap <Esc><Esc> <c-\><c-n><c-w><c-p>

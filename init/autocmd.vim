@@ -5,11 +5,14 @@ autocmd BufReadPost quickfix nnoremap <buffer> <cr> <cr>
 au! BufEnter,BufWritePost *.js,*.jsx,*.py,*.hs,*.c,*.cpp,*.rs,*.go Neomake
 
 " Haskell
-au BufNewFile,BufRead,BufReadPost *.hs nmap <Leader>ht :GhcModType<CR>
-au BufNewFile,BufRead,BufReadPost *.hs nmap <Leader>hp V:PointFree<CR>
-au BufNewFile,BufRead,BufReadPost *.hs nmap <Leader>hr V:PointFree!<CR>
-au BufNewFile,BufRead,BufReadPost *.hs nmap <Leader>hl :HLint<CR>
-au BufNewFile,BufRead,BufReadPost *.hs nmap <Leader>hgl :GhcModLint<CR>
+"
+" Still considering if these are useful enough...
+" au BufNewFile,BufRead,BufReadPost *.hs nnoremap <Leader>ht :GhcModType<CR>
+" au BufNewFile,BufRead,BufReadPost *.hs nnoremap <Leader>hp V:PointFree<CR>
+" au BufNewFile,BufRead,BufReadPost *.hs nnoremap <Leader>hr V:PointFree!<CR>
+" au BufNewFile,BufRead,BufReadPost *.hs nnoremap <Leader>hl :HLint<CR>
+" au BufNewFile,BufRead,BufReadPost *.hs nnoremap <Leader>hgl :GhcModLint<CR>
+"
 au BufNewFile,BufRead,BufReadPost *.hs set omnifunc=necoghc#omnifunc
 
 " CPP

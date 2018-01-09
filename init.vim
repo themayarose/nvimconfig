@@ -30,6 +30,8 @@ runtime init/plugins.vim
 
 runtime init/plugins-opts.vim
 
+runtime init/autocmd.vim
+
 " Local config
 if filereadable(expand("~/.nvimrc_local"))
     source ~/.nvimrc_local

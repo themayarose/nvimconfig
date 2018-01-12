@@ -72,8 +72,6 @@ nnoremap <c--> <C-w><
 tnoremap <Esc><Esc> <c-\><c-n><c-w><c-p>
 tnoremap <c-\><c-\> <c-\><c-n>
 
-au BufWinEnter,WinEnter term://* startinsert
-
 " Buffer stuff
 nnoremap <silent> <leader>bn :new<cr>
 nnoremap <silent> <leader>bw :bw #<cr>

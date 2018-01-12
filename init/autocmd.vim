@@ -1,3 +1,7 @@
+" Terminal
+au BufWinEnter,WinEnter term://* startinsert
+au TermOpen term://* setl nonumber | startinsert
+
 " Restore quickfix <cr>
 autocmd BufReadPost quickfix nnoremap <buffer> <cr> <cr>
 

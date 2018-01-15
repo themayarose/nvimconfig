@@ -37,8 +37,11 @@ nnoremap <silent> <leader>tmj :tabm 0<cr>
 nnoremap <silent> <leader>tmk :tabm<cr>
 nnoremap <silent> <leader>tn :tabnew<cr>
 nnoremap <silent> <leader>tq :tabclose<cr>
-nnoremap <silent> <leader>] :tabn<cr>
-nnoremap <silent> <leader>[ :tabp<cr>
+nnoremap <silent> <leader><pageup> :tabn<cr>
+nnoremap <silent> <leader><pagedown> :tabp<cr>
+
+nnoremap <silent> <c-s-pageup> <c-\><c-n>:tabp<cr>
+nnoremap <silent> <c-s-pagedown> <c-\><c-n>:tabn<cr>
 
 " Projects
 nnoremap <silent> <leader>pp :OpenSession<cr>
@@ -71,6 +74,8 @@ nnoremap <c--> <C-w><
 " Terminal stuff
 tnoremap <Esc><Esc> <c-\><c-n><c-w><c-p>
 tnoremap <c-\><c-\> <c-\><c-n>
+tnoremap <silent> <c-s-pageup> <c-\><c-n>:tabp<cr>
+tnoremap <silent> <c-s-pagedown> <c-\><c-n>:tabn<cr>
 
 " Buffer stuff
 nnoremap <silent> <leader>bn :new<cr>

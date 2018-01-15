@@ -40,6 +40,8 @@ let g:UltiSnipsRemoveSelectModeMappings = 0
 " NERDTree
 let NERDTreeShowBookmarks=1
 let NERDTreeMouseMode=2
+let NERDTreeWinPos="right"
+let NERDTreeWinSize=33
 
 " GHCMod
 let g:ghcmod_ghc_options=['--make', '-fno-warn-tabs']

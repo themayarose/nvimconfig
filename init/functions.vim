@@ -59,3 +59,30 @@ function! BackTab()
     return ""
 endfunction
 
+
+function GetBufferNodeExecutable(filename)
+    let l:exec_path = ""
+    let l:buffer_path = expand('%:p:h')
+
+    while len(l:exec_path) == 0
+        let l:candidate = l:buffer_path . '/node_modules/.bin/' . a:filename
+
+        if filereadable(l:candidate)
+            let l:exec_path = l:candidate
+        else
+            let l:buffer_path = fnamemodify(l:buffer_path, ':h')
+
+            if l:buffer_path == $HOME
+                let l:candidate = '/usr/bin/' . a:filename
+
+                if filereadable(l:candidate)
+                    let l:exec_path = l:candidate
+                else
+                    break
+                endif
+            endif
+        endif
+    endwhile
+
+    return l:exec_path
+endfunction

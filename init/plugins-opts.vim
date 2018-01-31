@@ -67,21 +67,8 @@ let g:neomake_c_compdb_maker = {
 
 let g:neomake_cpp_compdb_maker = g:neomake_c_compdb_maker
 
-let s:flow_vim_quickfix_path = g:plugin_path .
+let g:flow_vim_quickfix_path = g:plugin_path .
             \ '/flow-vim-quickfix/bin/flow-vim-quickfix'
-
-let s:flow_cmd = '([ -f node_modules/.bin/flow ] && ' .
-            \ 'node_modules/.bin/flow --json || /usr/bin/flow --json)'
-
-let g:neomake_javascript_flowjson_maker = {
-    \ 'exe': '/usr/bin/sh',
-    \ 'args': ['-c', s:flow_cmd . ' 2> /dev/null | ' .
-    \ s:flow_vim_quickfix_path],
-    \ 'errorformat': '%E%f:%l:%c\,%n: %m',
-    \ 'cwd': '%:p:h',
-    \ }
-
-let g:neomake_jsx_flowjson_maker = g:neomake_javascript_flowjson_maker
 
 let g:neomake_logfile=$HOME . '/neomake.log'
 let g:neomake_open_list=0

@@ -76,6 +76,10 @@ tnoremap <Esc><Esc> <c-\><c-n><c-w><c-p>
 tnoremap <c-\><c-\> <c-\><c-n>
 tnoremap <silent> <c-s-pageup> <c-\><c-n>:tabp<cr>
 tnoremap <silent> <c-s-pagedown> <c-\><c-n>:tabn<cr>
+tnoremap <silent> <c-left> <c-\><c-n><c-w>h
+tnoremap <silent> <c-down> <c-\><c-n><c-w>j
+tnoremap <silent> <c-up> <c-\><c-n><c-w>k
+tnoremap <silent> <c-right> <c-\><c-n><c-w>l
 
 " Buffer stuff
 nnoremap <silent> <leader>bn :new<cr>

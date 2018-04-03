@@ -60,12 +60,13 @@ function! BackTab()
 endfunction
 
 
-function GetBufferNodeExecutable(filename)
+function SearchUpwardFile(path, filename, ...)
+    let l:fallback = (a:0 > 0) ? a:1 : '/usr/bin/'
     let l:exec_path = ""
     let l:buffer_path = expand('%:p:h')
 
     while len(l:exec_path) == 0
-        let l:candidate = l:buffer_path . '/node_modules/.bin/' . a:filename
+        let l:candidate = l:buffer_path . '/' . a:path . a:filename
 
         if filereadable(l:candidate)
             let l:exec_path = l:candidate
@@ -73,7 +74,7 @@ function GetBufferNodeExecutable(filename)
             let l:buffer_path = fnamemodify(l:buffer_path, ':h')
 
             if l:buffer_path == $HOME
-                let l:candidate = '/usr/bin/' . a:filename
+                let l:candidate = l:fallback . a:filename
 
                 if filereadable(l:candidate)
                     let l:exec_path = l:candidate
@@ -85,4 +86,8 @@ function GetBufferNodeExecutable(filename)
     endwhile
 
     return l:exec_path
+endfunction
+
+function GetBufferNodeExecutable(filename)
+    return SearchUpwardFile('node_modules/.bin/', a:filename)
 endfunction

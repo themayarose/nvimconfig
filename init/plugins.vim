@@ -8,6 +8,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'equalsraf/neovim-qt', { 'rtp': 'src/gui/runtime' }
 
 " Error checking
@@ -66,6 +67,9 @@ Plug 'jparise/vim-graphql'
 " Plug 'mxw/vim-jsx'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'ryyppy/flow-vim-quickfix', {'on': [], 'do': 'yarn'}
+
+" Latex
+Plug 'lervag/vimtex'
 
 " Colorschemes
 Plug 'https://github.com/morhetz/gruvbox'

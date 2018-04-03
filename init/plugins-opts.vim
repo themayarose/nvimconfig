@@ -111,6 +111,43 @@ let g:cpp_use_qt = 1
 let g:cpp_class_scope_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 
+" Vimtex
+let g:vimtex_compiler_latexmk = {
+    \ 'backend': 'nvim',
+    \ 'backgroud': 1,
+    \ 'build_dir': '../build',
+    \ 'callback': 1,
+    \ 'continuous': 1,
+    \ 'executable': 'latexmk',
+    \ 'options': [
+        \ '-xelatex',
+        \ '-interaction=nonstopmode',
+        \ '-synctex=1',
+        \ '-file-line-error',
+        \ '-verbose',
+        \],
+    \}
+let g:vimtex_view_method = 'mupdf'
+let g:vimtex_compiler_progname = 'nvr'
+
+if !exists('g:deoplete#omni#input_patterns')
+    let g:deoplete#omni#input_patterns = {}
+endif
+
+let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
+let g:vimtex_quickfix_mode = 0
+
+augroup latexSurround
+    autocmd!
+    autocmd FileType tex call s:latexSurround()
+augroup END
+
+function! s:latexSurround()
+    let b:surround_{char2nr("e")}
+    \ = "\\begin{\1environment: \1}\n\t\r\n\\end{\1\1}"
+    let b:surround_{char2nr("c")} = "\\\1command: \1{\r}"
+endfunction
+
 " Tagbar
 if g:IsOSX == 1
     let g:tagbar_ctags_bin = "/usr/local/bin/ctags"

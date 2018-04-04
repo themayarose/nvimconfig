@@ -33,7 +33,7 @@ function! WriterBuffer()
     " Change current buffer to write mode.
     setlocal formatoptions=ant
     setlocal spell
-    setlocal spelllang=pt
+    setlocal spelllang=pt_br
 endfunction
 
 function! UnWriterBuffer()

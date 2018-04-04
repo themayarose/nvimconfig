@@ -30,6 +30,9 @@ au BufNewFile,BufRead,BufReadPost *.html set filetype=htmldjango
 " Markdown
 au BufNewFile,BufRead,BufReadPost *.md set filetype=markdown
 
+" Latex
+au BufNewFile,BufRead,BufReadPost *.tex set filetype=tex
+
 " SQL
 au FileType sql set commentstring=--\ %s
 

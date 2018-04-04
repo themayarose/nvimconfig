@@ -9,6 +9,20 @@ function! GoToBuffer(count)
     execute 'buffer ' . buf_nr
 endfunction
 
+function ToggleFlag(option, flag)
+    exec 'let l:lopt = &' . a:option
+    let l:change = ""
+
+    if l:lopt =~ (".*" . a:flag . ".*")
+        let l:change = "-"
+    else
+        let l:change = "+"
+    endif
+
+    exec 'setl ' . a:option . l:change . '=' . a:flag
+    echom a:option . ': ' . l:change . a:flag
+endfunction
+
 function! InputChar()
     " Gets a single-digit number from keyboard
     let c = getchar()

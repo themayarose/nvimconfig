@@ -4,6 +4,8 @@ let g:fzf_action = {
     \ 'ctrl-x': 'split',
     \ 'ctrl-v': 'vsplit' }
 
+let $FZF_DEFAULT_COMMAND = 'ag -g "" --ignore node_modules --ignore flow-typed --ignore lib --ignore __pycache__ --skip-vcs-ignores'
+
 " Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1

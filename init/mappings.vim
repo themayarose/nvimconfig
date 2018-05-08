@@ -27,8 +27,12 @@ command Qa :qa
 command Wsudo :w ! sudo tee %
 
 " Plugins 101
-noremap <F2> :TagbarToggle<cr>
-noremap <F3> :NERDTreeToggle<cr>
+noremap <silent> <F2> :TagbarToggle<cr>
+noremap <silent> <F3> :NERDTreeToggle<cr>
+
+if exists('g:GtkGuiLoaded')
+    noremap <silent> <F4> :NGToggleSidebar<cr>
+endif
 
 " Leader-based tab stuff can stay... for now.
 nnoremap <silent> <leader>tmh :tabm -1<cr>

@@ -31,7 +31,7 @@ noremap <silent> <F2> :TagbarToggle<cr>
 noremap <silent> <F3> :NERDTreeToggle<cr>
 
 if exists('g:GtkGuiLoaded')
-    noremap <silent> <F4> :NGToggleSidebar<cr>
+    noremap <silent> <F4> :call rpcnotify(1, 'Gui', 'Command', 'ToggleSidebar')<cr>
 endif
 
 " Leader-based tab stuff can stay... for now.

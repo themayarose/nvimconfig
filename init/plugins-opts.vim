@@ -12,6 +12,11 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#formatter = 'custom_format'
 let g:airline#extensions#tabline#show_buffers = 2
 
+if exists('g:GtkGuiLoaded')
+    runtime init/airline-powerline.vim
+endif
+
+
 " delimitMate
 " let g:delimitMate_tab2exit = 0
 

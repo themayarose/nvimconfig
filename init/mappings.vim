@@ -5,6 +5,14 @@ nnoremap j gj
 nnoremap k gk
 nnoremap Y y$
 
+" Switches # and " for easier register access in international layouts
+noremap " #
+noremap # "
+xnoremap " #
+xnoremap # "
+vnoremap " #
+vnoremap # "
+
 " Switches ; and :
 nnoremap ; :
 nnoremap : ;

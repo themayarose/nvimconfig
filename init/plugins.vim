@@ -49,6 +49,9 @@ Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'rust-lang/rust.vim'
 Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 
+" Pony
+Plug 'dleonard0/pony-vim-syntax'
+
 " Python
 Plug 'bps/vim-textobj-python'
 Plug 'hdima/python-syntax'

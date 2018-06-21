@@ -1,5 +1,6 @@
-function! neomake#makers#flowjson#flowjson() 
-    let l:flow_cmd = GetBufferNodeExecutable('flow')
+function! neomake#makers#flowjson#flowjson()
+    " let l:flow_cmd = GetBufferNodeExecutable('flow')
+    let l:flow_cmd = '/home/' . $LOGNAME . '/.yarn/bin/flow'
 
     return {
     \ 'exe': '/usr/bin/sh',

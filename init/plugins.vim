@@ -47,7 +47,10 @@ Plug 'pbrisbin/vim-syntax-shakespeare'
 
 " Rust
 Plug 'rust-lang/rust.vim'
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': './install.sh'
+    \ }
 
 " Python
 Plug 'bps/vim-textobj-python'

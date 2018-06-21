@@ -22,6 +22,7 @@ endif
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option('complete_method', 'omnifunc')
 
 " JavaScript
 let g:jsx_ext_required = 0
@@ -166,10 +167,13 @@ let g:tagbar_sort = 0
 " LanguageClient
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'javascript': ['flow-language-server', '--stdio', '--no-auto-download',
+        \ '--flow-path=/home/' . $LOGNAME . '/.yarn/bin/flow'],
+    \ 'javascript-jsx': ['flow-language-server', '--stdio', '--no-auto-download',
+        \ '--try-flow-bin'],
+    \ 'jsx': ['flow-language-server', '--stdio', '--no-auto-download',
+        \ '--try-flow-bin'],
     \ }
-    " \ 'javascript': ['javascript-typescript-langserver'],
-    " \ 'javascript-jsx': ['javascript-typescript-langserver'],
-    " \ 'jsx': ['javascript-typescript-langserver'],
     "\ 'python': ['pyls'],
 
 let g:LanguageClient_autoStart = 1

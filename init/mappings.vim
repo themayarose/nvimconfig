@@ -51,6 +51,8 @@ nnoremap <silent> <leader>tn :tabnew<cr>
 nnoremap <silent> <leader>tq :tabclose<cr>
 nnoremap <silent> <leader><pageup> :tabn<cr>
 nnoremap <silent> <leader><pagedown> :tabp<cr>
+nnoremap <silent> <leader>] :tabn<cr>
+nnoremap <silent> <leader>[ :tabp<cr>
 
 nnoremap <silent> <c-s-pageup> <c-\><c-n>:tabp<cr>
 nnoremap <silent> <c-s-pagedown> <c-\><c-n>:tabn<cr>

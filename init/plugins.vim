@@ -49,7 +49,7 @@ Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'rust-lang/rust.vim'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
-    \ 'do': './install.sh'
+    \ 'do': './install.sh; ' . $HOME . '/.config/nvim/get_jdt.sh'
     \ }
 
 " Pony

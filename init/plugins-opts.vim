@@ -164,6 +164,13 @@ endif
 let g:tagbar_width = 33
 let g:tagbar_sort = 0
 
+if g:IsOSX
+    let g:javalc_config = '~/.config/nvim/jdt/config_mac'
+else
+    let g:javalc_config = '~/.config/nvim/jdt/config_linux'
+endif
+
+
 " LanguageClient
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
@@ -173,6 +180,19 @@ let g:LanguageClient_serverCommands = {
         \ '--try-flow-bin'],
     \ 'jsx': ['flow-language-server', '--stdio', '--no-auto-download',
         \ '--try-flow-bin'],
+    \ 'java': ['java',
+        \   '-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=1044',
+        \   '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+        \   '-Dosgi.bundles.defaultStartLevel=4',
+        \   '-Declipse.product=org.eclipse.jdt.ls.core.product',
+        \   '-Dlog.protocol=true',
+        \   '-Dlog.level=ALL',
+        \   '-noverify',
+        \   '-Xmx1G',
+        \   '-jar', '~/.config/nvim/jdt/plugins/launcher.jar',
+        \   '-configuration', g:javalc_config,
+        \   '-data', '~/Development'
+        \ ],
     \ }
     "\ 'python': ['pyls'],
 

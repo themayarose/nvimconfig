@@ -82,8 +82,8 @@ let g:neomake_logfile=$HOME . '/neomake.log'
 let g:neomake_open_list=0
 let g:neomake_python_enabled_makers=['pylint']
 " let g:neomake_rust_enabled_makers=['clippy']
-let g:neomake_javascript_enabled_makers=['eslint', 'flowjson']
-let g:neomake_jsx_enabled_makers=['eslint', 'flowjson']
+let g:neomake_javascript_enabled_makers=['eslint'] ", 'flowjson']
+let g:neomake_jsx_enabled_makers=['eslint'] ", 'flowjson']
 let g:neomake_c_enabled_makers=['compdb', 'clangtidy']
 let g:neomake_c_clangtidy_args=['-p ./build/']
 let g:neomake_cpp_enabled_makers=['compdb', 'clangtidy']
@@ -197,8 +197,10 @@ let g:LanguageClient_serverCommands = {
         \   '-data', '~/Development'
         \ ],
     \ }
-    "\ 'python': ['pyls'],
+    " \ 'python': ['pyls', '-v', '--log-file', '~/pyls.log'],
 
+let g:LanguageClient_settingsPath = "~/.config/nvim/lc_settings.json"
+let g:LanguageClient_loadSettings = 1
 let g:LanguageClient_autoStart = 1
 
 " Gruvbox

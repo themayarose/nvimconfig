@@ -1,31 +1,72 @@
 #!/usr/bin/zsh
 
+NVIM_PATH="$HOME/.config/nvim"
+UPSTREAM_VERSION="not found"
+LATEST_PATH="$NVIM_PATH/.latest_jdt"
+
 function get_latest_release {
-    curl --silent "https://api.github.com/repos/$1/tags" |
-        grep '"name":' |
-        head -n 1 |
-        sed -E 's/.*"([^"]+)".*/\1/'
+    curl -s "http://download.eclipse.org/jdtls/snapshots/latest.txt"
 }
 
-function get_vscode_java {
+function update_needed {
+    local local_version=$([[ -r $LATEST_PATH ]] && cat $LATEST_PATH || echo "")
+    UPSTREAM_VERSION=$(get_latest_release)
+
+    [ "$UPSTREAM_VERSION" != "$local_version" ]
+}
+
+function download_jdt {
     local target=$(mktemp -d)
     local zip="$target/jdt.tar.gz"
-    local extract="$HOME/.config/nvim/jdt"
-    echo "Downloading to $zip and unpacking to $extract..."
-    curl -L http://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz -o $zip
-    echo "Downloaded."
+    curl -sL http://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz -o $zip
+
+    echo $zip
+}
+
+function unpack_jdt {
+    echo "Unpacking JDT and replacing previous version..."
+
+    local zip=$1
+    local extract=$2
 
     rm -rf $extract
-    echo "Removed old version."
     mkdir $extract
     pushd $extract
     tar -xzvf $zip
-    $popd
-    echo "Unzipped."
+    popd
     rm $zip
-    echo "Removed zip."
+}
+
+function launcher_setup {
+    echo "Setting up launcher..."
+
+    local extract=$1
     local launcher=$(ls $extract/plugins/org.eclipse.equinox.launcher_* | head -n 1)
+
     ln -s $launcher $extract/plugins/launcher.jar
 }
 
-get_vscode_java
+function update_beacon {
+    echo "JDT updated. New version:"
+
+    local extract=$1
+
+    echo "$UPSTREAM_VERSION" | tee $LATEST_PATH
+}
+
+function update_jdt {
+    if update_needed; then
+        local extract="$NVIM_PATH/jdt"
+
+        echo "Downloading version $UPSTREAM_VERSION..."
+        local zip=$(download_jdt)
+
+        unpack_jdt $zip $extract
+        launcher_setup $extract
+        update_beacon
+    else
+        echo "JDT is up to date."
+    fi
+}
+
+update_jdt

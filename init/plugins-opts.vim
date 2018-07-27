@@ -178,11 +178,7 @@ endif
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ 'javascript': ['flow-language-server', '--stdio', '--no-auto-download',
-        \ '--flow-path=/home/' . $LOGNAME . '/.yarn/bin/flow'],
-    \ 'javascript-jsx': ['flow-language-server', '--stdio', '--no-auto-download',
-        \ '--try-flow-bin'],
-    \ 'jsx': ['flow-language-server', '--stdio', '--no-auto-download',
-        \ '--try-flow-bin'],
+        \ '--flow-path=' . $HOME . '/.yarn/bin/flow'],
     \ 'java': ['java',
         \   '-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=1044',
         \   '-Declipse.application=org.eclipse.jdt.ls.core.id1',
@@ -198,10 +194,17 @@ let g:LanguageClient_serverCommands = {
         \ ],
     \ }
     " \ 'python': ['pyls', '-v', '--log-file', '~/pyls.log'],
+    " \ 'javascript-jsx': ['flow-language-server', '--stdio', '--no-auto-download',
+    "     \ '--flow-path=/home/' . $LOGNAME . '/.yarn/bin/flow'],
+    " \ 'jsx': ['flow-language-server', '--stdio', '--no-auto-download',
+    "     \ '--flow-path=/home/' . $LOGNAME . '/.yarn/bin/flow'],
 
-let g:LanguageClient_settingsPath = "~/.config/nvim/lc_settings.json"
+let g:LanguageClient_settingsPath = $HOME . "/.config/nvim/lc_settings.json"
 let g:LanguageClient_loadSettings = 1
 let g:LanguageClient_autoStart = 1
+let g:LanguageClient_diagnosticsList = "Location"
+" let g:LanguageClient_loggingFile = $HOME . "/.lc_log"
+" let g:LanguageClient_windowLogMessageLevel = "Log"
 
 " Gruvbox
 let g:gruvbox_italic = 1

@@ -18,7 +18,7 @@ function update_needed {
 function download_jdt {
     local target=$(mktemp -d)
     local zip="$target/jdt.tar.gz"
-    curl -sL http://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz -o $zip
+    curl -L http://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz -o $zip
 
     echo $zip
 }

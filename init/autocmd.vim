@@ -43,3 +43,6 @@ au BufNewFile,BufRead,BufReadPost *.js let b:neomake_jsx_eslint_exe =
 au BufNewFile,BufRead,BufReadPost *.js let b:neomake_javascript_eslint_exe =
             \ systemlist("realpath $(find . -type d -name node_modules | head -n 1)")[0] .
             \ '/.bin/eslint'
+
+
+au VimResized * set ead=hor ea noea " keep windows evenly spaced horizontally

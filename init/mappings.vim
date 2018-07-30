@@ -79,6 +79,7 @@ nnoremap <silent> <leader>A <C-w>H
 nnoremap <silent> <leader>W <C-w>K
 nnoremap <silent> <leader>S <C-w>J
 nnoremap <silent> <leader>D <C-w>L
+nnoremap <silent> <leader><space> :set ead=hor ea noea<cr>
 
 nnoremap + <C-w>+
 nnoremap - <C-w>-

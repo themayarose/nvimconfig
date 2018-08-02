@@ -4,6 +4,8 @@ NVIM_PATH="$HOME/.config/nvim"
 UPSTREAM_VERSION="not found"
 LATEST_PATH="$NVIM_PATH/.latest_jdt"
 
+set -e # if anything fails, stop what we're doing
+
 function get_latest_release {
     curl -s "http://download.eclipse.org/jdtls/snapshots/latest.txt"
 }

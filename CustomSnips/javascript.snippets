@@ -8,7 +8,7 @@ snippet cmp "React Component"
 export default class ${1:Component} extends React.Component<*, *> {
 	props: {$2}
 
-	render() {
+	render(): Element<*> {
 		return (
 			${3:<div/>}
 		);
@@ -19,5 +19,5 @@ endsnippet
 snippet init "Default imports"
 //@flow
 
-import React from 'react';
+import React, {type Element} from 'react';
 endsnippet

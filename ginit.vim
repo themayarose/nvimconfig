@@ -3,7 +3,7 @@ if exists('g:GtkGuiLoaded')
     runtime init/neovim-gtk.vim
 else
     " Neovim-Qt
-    GuiFont Fira Mono:h11
+    GuiFont! FuraCode Nerd Font:h11
 endif
 
 nnoremap <silent> <c-pageup> <c-\><c-n>:tabp<cr>

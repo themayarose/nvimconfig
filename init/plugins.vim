@@ -59,7 +59,7 @@ Plug 'dleonard0/pony-vim-syntax'
 Plug 'bps/vim-textobj-python'
 Plug 'hdima/python-syntax'
 Plug 'hynek/vim-python-pep8-indent'
-Plug 'zchee/deoplete-jedi'
+" Plug 'zchee/deoplete-jedi'
 
 " C/C++
 Plug 'octol/vim-cpp-enhanced-highlight'

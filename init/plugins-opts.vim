@@ -75,7 +75,7 @@ let g:flow_vim_quickfix_path = g:plugin_path .
 
 let g:neomake_logfile=$HOME . '/neomake.log'
 let g:neomake_open_list=0
-let g:neomake_python_enabled_makers=['pylint']
+" let g:neomake_python_enabled_makers=['pylint']
 " let g:neomake_rust_enabled_makers=['clippy']
 let g:neomake_javascript_enabled_makers=['eslint'] ", 'flowjson']
 let g:neomake_jsx_enabled_makers=['eslint'] ", 'flowjson']
@@ -187,8 +187,8 @@ let g:LanguageClient_serverCommands = {
         \   '-configuration', g:javalc_config,
         \   '-data', '~/Development'
         \ ],
+    \ 'python': ['pyls', '-v', '--log-file', '~/pyls.log'],
     \ }
-    " \ 'python': ['pyls', '-v', '--log-file', '~/pyls.log'],
     " \ 'javascript-jsx': ['flow-language-server', '--stdio', '--no-auto-download',
     "     \ '--flow-path=/home/' . $LOGNAME . '/.yarn/bin/flow'],
     " \ 'jsx': ['flow-language-server', '--stdio', '--no-auto-download',

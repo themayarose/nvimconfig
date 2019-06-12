@@ -4,6 +4,8 @@ if exists('g:GtkGuiLoaded')
 else
     " Neovim-Qt
     GuiFont! FuraCode Nerd Font:h11
+    GuiTabline 0
+    call rpcnotify(0, 'Gui', 'Option', 'RenderLigatures', 1)
 endif
 
 nnoremap <silent> <c-pageup> <c-\><c-n>:tabp<cr>

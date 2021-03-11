@@ -125,6 +125,7 @@ let g:vimtex_compiler_latexmk = {
     \}
 let g:vimtex_view_method = 'mupdf'
 let g:vimtex_compiler_progname = 'nvr'
+let g:tex_flavor = 'xelatex'
 
 let g:vimtex_compiler_latexmk_engines = {
     \ '_'                : '-xelatex',
@@ -136,11 +137,11 @@ let g:vimtex_compiler_latexmk_engines = {
     \ 'context (xetex)'  : '-pdf -pdflatex=''texexec --xtx''',
     \}
 
-if !exists('g:deoplete#omni#input_patterns')
-    let g:deoplete#omni#input_patterns = {}
-endif
+" if !exists('g:deoplete#omni#input_patterns')
+"     let g:deoplete#omni#input_patterns = {}
+" endif
 
-let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
+" let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 let g:vimtex_quickfix_mode = 0
 
 augroup latexSurround

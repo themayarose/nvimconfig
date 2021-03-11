@@ -142,7 +142,7 @@ let g:vimtex_compiler_latexmk_engines = {
 " endif
 
 " let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
-"
+
 let g:vimtex_quickfix_mode = 0
 
 augroup latexSurround

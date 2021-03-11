@@ -35,22 +35,36 @@ Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug 'Shougo/echodoc.vim'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
 Plug 'junegunn/fzf.vim'
 
 " Haskell
 Plug 'eagletmt/ghcmod-vim'
 Plug 'dag/vim2hs'
 Plug 'eagletmt/neco-ghc'
-Plug 'Shougo/vimproc', { 'do': 'make -f make_unix.mak' }
+
+if g:IsWin
+    Plug 'Shougo/vimproc'
+elseif
+    Plug 'Shougo/vimproc', { 'do': 'make -f make_unix.mak' }
+endif
+
 Plug 'pbrisbin/vim-syntax-shakespeare'
 
 " Rust
 Plug 'rust-lang/rust.vim'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': './install.sh; ' . $HOME . '/.config/nvim/get_jdt.sh'
-    \ }
+
+if g:IsWin
+    Plug 'autozimu/LanguageClient-neovim', {
+        \ 'branch': 'next',
+        \ 'do': '.\install.ps1'
+        \ }
+else
+    Plug 'autozimu/LanguageClient-neovim', {
+        \ 'branch': 'next',
+        \ 'do': './install.sh; ' . g:CONFIG_PATH . '/get_jdt.sh'
+        \ }
+endif
 
 " Pony
 Plug 'dleonard0/pony-vim-syntax'

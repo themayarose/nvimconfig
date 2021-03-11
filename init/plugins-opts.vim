@@ -95,7 +95,7 @@ let g:user_emmet_leader_key='<C-m>'
 
 " Session
 let g:session_autoload=0
-let g:session_directory='~/.config/nvim/sessions'
+let g:session_directory=g:CONFIG_PATH . '/sessions'
 let g:session_autosave = 'no'
 
 " C/C++
@@ -125,6 +125,7 @@ let g:vimtex_compiler_latexmk = {
     \}
 let g:vimtex_view_method = 'mupdf'
 let g:vimtex_compiler_progname = 'nvr'
+let g:tex_flavor = 'xelatex'
 
 let g:vimtex_compiler_latexmk_engines = {
     \ '_'                : '-xelatex',
@@ -136,11 +137,12 @@ let g:vimtex_compiler_latexmk_engines = {
     \ 'context (xetex)'  : '-pdf -pdflatex=''texexec --xtx''',
     \}
 
-if !exists('g:deoplete#omni#input_patterns')
-    let g:deoplete#omni#input_patterns = {}
-endif
+" if !exists('g:deoplete#omni#input_patterns')
+"     let g:deoplete#omni#input_patterns = {}
+" endif
 
-let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
+" let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
+"
 let g:vimtex_quickfix_mode = 0
 
 augroup latexSurround
@@ -163,9 +165,11 @@ let g:tagbar_width = 33
 let g:tagbar_sort = 0
 
 if g:IsOSX
-    let g:javalc_config = '~/.config/nvim/jdt/config_mac'
+    let g:javalc_config = g:CONFIG_PATH . '/jdt/config_mac'
+elseif g:IsWin
+    let g:javalc_config = g:CONFIG_PATH . '/jdt/config_win'
 else
-    let g:javalc_config = '~/.config/nvim/jdt/config_linux'
+    let g:javalc_config = g:CONFIG_PATH . '/jdt/config_linux'
 endif
 
 
@@ -183,7 +187,7 @@ let g:LanguageClient_serverCommands = {
         \   '-Dlog.level=ALL',
         \   '-noverify',
         \   '-Xmx1G',
-        \   '-jar', '~/.config/nvim/jdt/plugins/launcher.jar',
+        \   '-jar', g:CONFIG_PATH . '/jdt/plugins/launcher.jar',
         \   '-configuration', g:javalc_config,
         \   '-data', '~/Development'
         \ ],

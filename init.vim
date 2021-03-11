@@ -1,4 +1,7 @@
 " Local config that needs to run before everything else
+
+let g:CONFIG_PATH = $HOME . '/.config/nvim'
+
 if filereadable(expand("~/.nvimrc_local_prepend"))
     source ~/.nvimrc_local_prepend
 endif
@@ -14,17 +17,20 @@ runtime init/functions.vim
 
 " Detect OSX
 let g:IsOSX = 0
+let g:IsWin = 0
 
 if has("unix")
     let s:uname = system("echo -n \"$(uname)\"")
     if s:uname == "Darwin"
         let g:IsOSX = 1
     endif
+elseif has("win32")
+    let g:IsWin = 1
 endif
 
 runtime init/mappings.vim
 
-let g:plugin_path = '~/.config/nvim/plugged'
+let g:plugin_path = g:CONFIG_PATH . '/plugged'
 
 runtime init/plugins.vim
 

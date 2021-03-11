@@ -25,7 +25,7 @@ set textwidth=80
 set formatoptions=jcroql
 set wildmenu
 set autoread
-set directory=~/.config/nvim/swap
+let &directory=g:CONFIG_PATH . '/swap'
 set sessionoptions=curdir,tabpages,localoptions,blank,buffers,folds,resize,winpos,winsize
 set wildcharm=<C-,>
 set hidden

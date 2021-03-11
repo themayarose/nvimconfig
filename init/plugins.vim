@@ -45,7 +45,7 @@ Plug 'eagletmt/neco-ghc'
 
 if g:IsWin
     Plug 'Shougo/vimproc'
-elseif
+else
     Plug 'Shougo/vimproc', { 'do': 'make -f make_unix.mak' }
 endif
 

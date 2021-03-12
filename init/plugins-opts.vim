@@ -15,6 +15,11 @@ endif
 " delimitMate
 " let g:delimitMate_tab2exit = 0
 
+" COC
+if g:IsWin
+    let g:coc_global_extensions = [ 'coc-powershell' ]
+endif
+
 " Deoplete
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option('complete_method', 'omnifunc')

@@ -101,5 +101,14 @@ Plug 'https://github.com/morhetz/gruvbox'
 " Plug 'jscappini/material.vim'
 " Plug 'mkarmona/colorsbox'
 " Plug 'baskerville/bubblegum'
+"
+
+" Windows
+if g:IsWin
+    " Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+endif
+
+Plug 'sheerun/vim-polyglot'
+
 
 call plug#end()

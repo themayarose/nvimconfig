@@ -11,7 +11,6 @@ let s:fzfs_ignores = [
     \ ]
 
 let s:fzfs_options = [
-    \ "--skip-vcs-ignores"
     \ ]
 
 function MakeFzf(restrict, ignores)

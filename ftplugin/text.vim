@@ -1,1 +1,1 @@
-tex.vim
+./tex.vim

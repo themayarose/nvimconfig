@@ -6,6 +6,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#formatter = 'custom_format'
 let g:airline#extensions#tabline#show_buffers = 2
+let g:airline#extensions#tabline#ignore_bufadd_pat = '!|defx|gundo|nerd_tree|startify|tagbar|undotree|vimfiler'
 
 if exists('g:GtkGuiLoaded')
     runtime init/airline-powerline.vim
@@ -210,9 +211,19 @@ let g:LanguageClient_diagnosticsList = "Location"
 " let g:LanguageClient_loggingFile = $HOME . "/.lc_log"
 " let g:LanguageClient_windowLogMessageLevel = "Log"
 
+" OmniSharp
+let g:OmniSharp_server_use_net6 = 1
+
 " Gruvbox
 let g:gruvbox_italic = 1
-let g:gruvbox_contrast_dark = 'medium'
+let g:gruvbox_underline = 1
+let g:gruvbox_undercurl = 1
+let g:gruvbox_bold = 1
+let g:gruvbox_italic = 1
+let g:gruvbox_contrast_dark = 'hard' " medium?
+let g:gruvbox_transparent_bg = 1
+autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE
 
 colorscheme gruvbox
+
 

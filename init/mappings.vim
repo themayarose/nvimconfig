@@ -37,25 +37,34 @@ command Wsudo :w ! sudo tee %
 " Plugins 101
 noremap <silent> <F2> :TagbarToggle<cr>
 noremap <silent> <F3> :NERDTreeToggle<cr>
+noremap <silent> <F4> :NERDTree<cr>:TagbarOpen<cr><c-w>J<c-w>k<c-w>H:exe "vertical resize " . (&co - 33)<cr><c-w>l<c-w>r<c-w>h
 
-if exists('g:GtkGuiLoaded')
-    noremap <silent> <F4> :call rpcnotify(1, 'Gui', 'Command', 'ToggleSidebar')<cr>
-endif
+" if exists('g:GtkGuiLoaded')
+"     noremap <silent> <F4> :call rpcnotify(1, 'Gui', 'Command', 'ToggleSidebar')<cr>
+" endif
 
 " Leader-based tab stuff can stay... for now.
-nnoremap <silent> <leader>tmh :tabm -1<cr>
-nnoremap <silent> <leader>tml :tabm +1<cr>
-nnoremap <silent> <leader>tmj :tabm 0<cr>
-nnoremap <silent> <leader>tmk :tabm<cr>
-nnoremap <silent> <leader>tn :tabnew<cr>
-nnoremap <silent> <leader>tq :tabclose<cr>
-nnoremap <silent> <leader><pageup> :tabn<cr>
-nnoremap <silent> <leader><pagedown> :tabp<cr>
-nnoremap <silent> <leader>] :tabn<cr>
-nnoremap <silent> <leader>[ :tabp<cr>
+" nnoremap <silent> <leader>tmh :tabm -1<cr>
+" nnoremap <silent> <leader>tml :tabm +1<cr>
+" nnoremap <silent> <leader>tmj :tabm 0<cr>
+" nnoremap <silent> <leader>tmk :tabm<cr>
+" nnoremap <silent> <leader>tn :tabnew<cr>
+" nnoremap <silent> <leader>tq :tabclose<cr>
+" nnoremap <silent> <leader><pageup> :tabn<cr>
+" nnoremap <silent> <leader><pagedown> :tabp<cr>
+" nnoremap <silent> <leader>] :tabn<cr>
+" nnoremap <silent> <leader>[ :tabp<cr>
 
 nnoremap <silent> <c-s-pageup> <c-\><c-n>:tabp<cr>
 nnoremap <silent> <c-s-pagedown> <c-\><c-n>:tabn<cr>
+
+if has('win32')
+    nnoremap <silent> <leader>t :vsp \| term pwsh -nol<cr>
+    nnoremap <silent> <leader>T :sp \| term pwsh -nol<cr>
+else
+    nnoremap <silent> <leader>t :vsp \| term<cr>
+    nnoremap <silent> <leader>T :sp \| term<cr>
+endif
 
 " Projects
 nnoremap <silent> <leader>pp :OpenSession<cr>

@@ -110,5 +110,9 @@ endif
 
 Plug 'sheerun/vim-polyglot'
 
+Plug 'OmniSharp/omnisharp-vim'
+Plug 'nickspoons/vim-sharpenup'
+Plug 'dense-analysis/ale'
+
 
 call plug#end()

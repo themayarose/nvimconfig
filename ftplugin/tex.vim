@@ -1,5 +1,5 @@
-nnoremap <silent> <leader><space> :call ToggleFlag("formatoptions", "a")<cr>
+" nnoremap <silent> <leader><space> :call ToggleFlag("formatoptions", "a")<cr>
 
-setlocal formatoptions=tcqnj
+" setlocal formatoptions=tcqnj
 setlocal spell
 setlocal spelllang=pt_br

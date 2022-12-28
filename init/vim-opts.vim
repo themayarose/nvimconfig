@@ -35,5 +35,7 @@ set background=dark
 set title
 set termguicolors
 set list
+set splitright
+set splitbelow
 
 syntax on

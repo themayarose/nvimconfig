@@ -7,7 +7,7 @@ if filereadable(expand("~/.nvimrc_local_prepend"))
 endif
 
 " Fix list chars for windows
-if !has('win32') && (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8')
+if (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8')
     let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
 endif
 
@@ -37,6 +37,8 @@ runtime init/plugins.vim
 runtime init/plugins-opts.vim
 
 runtime init/autocmd.vim
+
+runtime init/airline-powerline.vim
 
 " Local config
 if filereadable(expand("~/.nvimrc_local"))

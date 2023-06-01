@@ -37,7 +37,7 @@ command Wsudo :w ! sudo tee %
 " Plugins 101
 noremap <silent> <F2> :TagbarToggle<cr>
 noremap <silent> <F3> :NERDTreeToggle<cr>
-noremap <silent> <F4> :NERDTree<cr>:TagbarOpen<cr><c-w>J<c-w>k<c-w>H:exe "vertical resize " . (&co - 33)<cr><c-w>l<c-w>r<c-w>h
+noremap <silent> <leader>sb :NERDTree<cr>:TagbarOpen<cr><c-w>J<c-w>k<c-w>H:exe "vertical resize " . (&co - 33)<cr><c-w>l<c-w>r<c-w>h
 
 " if exists('g:GtkGuiLoaded')
 "     noremap <silent> <F4> :call rpcnotify(1, 'Gui', 'Command', 'ToggleSidebar')<cr>

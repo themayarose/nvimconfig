@@ -40,3 +40,7 @@ command! -nargs=+ FzfRI let $FZF_DEFAULT_COMMAND=MakeFzfWrapper(<f-args>)
 
 let $FZF_DEFAULT_COMMAND = MakeFzf("", [])
 
+let g:fzf_bin = {
+    \ 'preview': substitute($HOME, "/", "\\", "g") . '\\AppData\\Local\\nvim\\plugged\\fzf.vim\\bin\\preview.sh'
+    \ }
+

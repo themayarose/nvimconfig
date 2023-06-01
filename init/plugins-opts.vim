@@ -214,6 +214,13 @@ let g:LanguageClient_diagnosticsList = "Location"
 " OmniSharp
 let g:OmniSharp_server_use_net6 = 1
 
+let g:ale_linters = {
+      \  'cs':['syntax', 'semantic', 'issues'],
+      \ }
+
+" VimSpector
+let g:vimspector_enable_mappings = 'HUMAN'
+
 " Gruvbox
 let g:gruvbox_italic = 1
 let g:gruvbox_underline = 1

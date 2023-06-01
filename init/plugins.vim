@@ -12,7 +12,7 @@ Plug 'majutsushi/tagbar'
 Plug 'equalsraf/neovim-qt', { 'rtp': 'src/gui/runtime' }
 
 " Error checking
-Plug 'benekastah/neomake'
+" Plug 'benekastah/neomake'
 
 " Snippets
 Plug 'SirVer/ultisnips'
@@ -34,7 +34,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug 'Shougo/echodoc.vim'
-Plug 'terryma/vim-multiple-cursors'
+" Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
 Plug 'junegunn/fzf.vim'
 
@@ -67,7 +67,7 @@ else
 endif
 
 " Pony
-Plug 'dleonard0/pony-vim-syntax'
+" Plug 'dleonard0/pony-vim-syntax'
 
 " Python
 Plug 'bps/vim-textobj-python'
@@ -81,12 +81,12 @@ Plug 'zchee/deoplete-clang'
 
 " Javascript
 " Plug 'ternjs/tern_for_vim', { 'do': 'rm -rf node_modules && npm install && npm install https://github.com/angelozerr/tern-react' }
-Plug 'kchmck/vim-coffee-script'
+" Plug 'kchmck/vim-coffee-script'
 Plug 'pangloss/vim-javascript'
-Plug 'jparise/vim-graphql'
+" Plug 'jparise/vim-graphql'
 " Plug 'mxw/vim-jsx'
-Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'ryyppy/flow-vim-quickfix', {'on': [], 'do': 'yarn'}
+" Plug 'MaxMEllon/vim-jsx-pretty'
+" Plug 'ryyppy/flow-vim-quickfix', {'on': [], 'do': 'yarn'}
 
 " Latex
 Plug 'lervag/vimtex'
@@ -113,6 +113,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'nickspoons/vim-sharpenup'
 Plug 'dense-analysis/ale'
+Plug 'puremourning/vimspector'
 
 
 call plug#end()

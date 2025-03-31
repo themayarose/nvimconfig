@@ -2,6 +2,7 @@
 
 let g:CONFIG_PATH = $HOME . '/.config/nvim'
 
+
 if filereadable(expand("~/.nvimrc_local_prepend"))
     source ~/.nvimrc_local_prepend
 endif

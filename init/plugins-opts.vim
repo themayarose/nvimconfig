@@ -23,14 +23,21 @@ let g:coq_settings = {
     \    'clients.lsp.weight_adjust': 1.5,
     \ }
 
+if g:IsWin
+    let g:omnisharp_path = "C:\\Users\\maya\\scoop\\apps\\omnisharp\\current\\OmniSharp.exe"
+else
+    let g:omnisharp_path = "/usr/bin/omnisharp"
+endif
+
 lua <<EOF
 
 local lspconfig = require "lspconfig"
 local coq = require "coq"
 
+
 lspconfig.omnisharp.setup(
     coq.lsp_ensure_capabilities {
-        cmd = { "C:\\Users\\maya\\scoop\\apps\\omnisharp\\current\\OmniSharp.exe" },
+        cmd = { vim.api.nvim_eval "omnisharp_path" },
         enable_editorconfig_support = true,
         enable_ms_build_load_projects_on_demand = false,
         enable_roslyn_analyzers = true,

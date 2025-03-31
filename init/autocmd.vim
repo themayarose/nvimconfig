@@ -23,6 +23,8 @@ au BufNewFile,BufRead,BufReadPost *.hs set omnifunc=necoghc#omnifunc
 au BufNewFile,BufRead,BufEnter *.cpp set omnifunc=""
 au BufNewFile,BufRead,BufEnter *.c set omnifunc=""
 au BufNewFile,BufRead,BufEnter *.h set omnifunc=""
+au BufNewFile,BufRead,BufEnter *.cs set omnifunc=""
+au BufNewFile,BufRead,BufReadPost *.cs LspStart
 
 " HTML
 au BufNewFile,BufRead,BufReadPost *.html set filetype=htmldjango

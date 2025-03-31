@@ -1,7 +1,7 @@
 set autoindent
 set ignorecase
 set smartcase
-set wrap
+set nowrap
 set linebreak
 set ruler
 set showmatch
@@ -18,7 +18,7 @@ set scrolloff=5
 set sidescrolloff=5
 set mouse=a
 set nu
-set completeopt-=preview
+set completeopt=menuone,noinsert,noselect
 set foldlevel=99
 set colorcolumn=80
 set textwidth=80
@@ -27,7 +27,7 @@ set wildmenu
 set autoread
 let &directory=g:CONFIG_PATH . '/swap'
 set sessionoptions=curdir,tabpages,localoptions,blank,buffers,folds,resize,winpos,winsize
-set wildcharm=<C-,>
+" set wildcharm=<C-,>
 set hidden
 set switchbuf=useopen
 set nohlsearch
@@ -37,5 +37,6 @@ set termguicolors
 set list
 set splitright
 set splitbelow
+set signcolumn=auto
 
 syntax on

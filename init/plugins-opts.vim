@@ -12,18 +12,38 @@ if exists('g:GtkGuiLoaded')
     runtime init/airline-powerline.vim
 endif
 
-
-" delimitMate
-" let g:delimitMate_tab2exit = 0
-
 " COC
 if g:IsWin
     let g:coc_global_extensions = [ 'coc-powershell' ]
 endif
 
-" Deoplete
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option('complete_method', 'omnifunc')
+let g:coq_settings = {
+    \    'limits.completion_auto_timeout': 6.0,
+    \    'auto_start': 'shut-up',
+    \    'clients.lsp.weight_adjust': 1.5,
+    \ }
+
+lua <<EOF
+
+local lspconfig = require "lspconfig"
+local coq = require "coq"
+
+lspconfig.omnisharp.setup(
+    coq.lsp_ensure_capabilities {
+        cmd = { "C:\\Users\\maya\\scoop\\apps\\omnisharp\\current\\OmniSharp.exe" },
+        enable_editorconfig_support = true,
+        enable_ms_build_load_projects_on_demand = false,
+        enable_roslyn_analyzers = true,
+        organize_imports_on_format = true,
+        enable_import_completion = true,
+        sdk_include_prereleases = true,
+        analyze_open_documents_only = false,
+    }
+)
+
+EOF
+
+
 
 " JavaScript
 let g:jsx_ext_required = 0
@@ -34,9 +54,9 @@ let g:vim_jsx_pretty_colorful_config = 1
 let g:deoplete#sources#jedi#show_docstring = 1
 
 " Deoplete Clang
-let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
-let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
-let g:deoplete#sources#clang#clang_complete_database = './build/'
+" let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
+" let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
+" let g:deoplete#sources#clang#clang_complete_database = './build/'
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<s-enter>"
@@ -143,12 +163,6 @@ let g:vimtex_compiler_latexmk_engines = {
     \ 'context (xetex)'  : '-pdf -pdflatex=''texexec --xtx''',
     \}
 
-" if !exists('g:deoplete#omni#input_patterns')
-"     let g:deoplete#omni#input_patterns = {}
-" endif
-
-" let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
-
 let g:vimtex_quickfix_mode = 0
 
 augroup latexSurround
@@ -180,39 +194,76 @@ endif
 
 
 " LanguageClient
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'javascript': ['flow-language-server', '--stdio', '--no-auto-download',
-        \ '--flow-path=' . $HOME . '/.yarn/bin/flow'],
-    \ 'java': ['java',
-        \   '-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=1044',
-        \   '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-        \   '-Dosgi.bundles.defaultStartLevel=4',
-        \   '-Declipse.product=org.eclipse.jdt.ls.core.product',
-        \   '-Dlog.protocol=true',
-        \   '-Dlog.level=ALL',
-        \   '-noverify',
-        \   '-Xmx1G',
-        \   '-jar', g:CONFIG_PATH . '/jdt/plugins/launcher.jar',
-        \   '-configuration', g:javalc_config,
-        \   '-data', '~/Development'
-        \ ],
-    \ 'python': ['pyls', '-v', '--log-file', '~/pyls.log'],
-    \ }
-    " \ 'javascript-jsx': ['flow-language-server', '--stdio', '--no-auto-download',
-    "     \ '--flow-path=/home/' . $LOGNAME . '/.yarn/bin/flow'],
-    " \ 'jsx': ['flow-language-server', '--stdio', '--no-auto-download',
-    "     \ '--flow-path=/home/' . $LOGNAME . '/.yarn/bin/flow'],
+" let g:LanguageClient_serverCommands = {
+"     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+"     \ 'javascript': ['flow-language-server', '--stdio', '--no-auto-download',
+"         \ '--flow-path=' . $HOME . '/.yarn/bin/flow'],
+"     \ 'java': ['java',
+"         \   '-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=1044',
+"         \   '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+"         \   '-Dosgi.bundles.defaultStartLevel=4',
+"         \   '-Declipse.product=org.eclipse.jdt.ls.core.product',
+"         \   '-Dlog.protocol=true',
+"         \   '-Dlog.level=ALL',
+"         \   '-noverify',
+"         \   '-Xmx1G',
+"         \   '-jar', g:CONFIG_PATH . '/jdt/plugins/launcher.jar',
+"         \   '-configuration', g:javalc_config,
+"         \   '-data', '~/Development'
+"         \ ],
+"     \ 'python': ['pyls', '-v', '--log-file', '~/pyls.log'],
+"     \ }
+"     " \ 'javascript-jsx': ['flow-language-server', '--stdio', '--no-auto-download',
+"     "     \ '--flow-path=/home/' . $LOGNAME . '/.yarn/bin/flow'],
+"     " \ 'jsx': ['flow-language-server', '--stdio', '--no-auto-download',
+"     "     \ '--flow-path=/home/' . $LOGNAME . '/.yarn/bin/flow'],
 
-let g:LanguageClient_settingsPath = $HOME . "/.config/nvim/lc_settings.json"
-let g:LanguageClient_loadSettings = 1
-let g:LanguageClient_autoStart = 1
-let g:LanguageClient_diagnosticsList = "Location"
+" let g:LanguageClient_settingsPath = $HOME . "/.config/nvim/lc_settings.json"
+" let g:LanguageClient_loadSettings = 1
+" let g:LanguageClient_autoStart = 1
+" let g:LanguageClient_diagnosticsList = "Location"
 " let g:LanguageClient_loggingFile = $HOME . "/.lc_log"
 " let g:LanguageClient_windowLogMessageLevel = "Log"
 
 " OmniSharp
 let g:OmniSharp_server_use_net6 = 1
+let g:OmniSharp_selector_ui = 'fzf'
+let g:OmniSharp_selector_findusages = 'fzf'
+let g:OmniSharp_highlight_types = 2
+let g:OmniSharp_diagnostic_overrides = {
+    \ 'IDE0055': {'type': 'None'},
+    \ 'IDE0160': {'type': 'None'},
+    \ 'IDE0011': {'type': 'None'},
+    \ 'IDE0008': {'type': 'None'},
+    \ 'IDE0058': {'type': 'None'},
+    \ 'IDE0046': {'type': 'None'},
+    \ 'IDE0200': {'type': 'None'},
+    \ 'IDE0022': {'type': 'None'},
+    \ 'IDE0028': {'type': 'None'},
+    \ 'IDE0045': {'type': 'None'},
+    \ 'IDE0061': {'type': 'None'},
+    \ 'IDE0021': {'type': 'None'},
+    \ 'CA1310': {'type': 'None'},
+    \ 'CA1822': {'type': 'None'},
+    \ 'CA1305': {'type': 'None'},
+    \ 'CA1304': {'type': 'None'},
+    \ 'CA1311': {'type': 'None'},
+    \ 'SYSLIB1045': {'type': 'None'},
+    \}
+let g:OmniSharp_diagnostic_showid = 1
+
+let g:OmniSharp_popup_options = {
+    \ 'winblend': 30,
+    \ 'winhl': 'Normal:Normal,FloatBorder:Special',
+    \ 'border': 'rounded'
+    \}
+
+let g:omnicomplete_fetch_full_documentation = 1
+
+let g:sharpenup_codeactions_set_signcolumn=0
+let g:sharpenup_map_prefix = '<leader>s'
+
+let g:float_preview#docked = 0
 
 let g:ale_linters = {
       \  'cs':['syntax', 'semantic', 'issues'],

@@ -52,7 +52,7 @@ function! InsertModeTab()
 
         if g:ulti_expand_or_jump_res == 0
             if (&omnifunc == "")
-                call deoplete#mappings#manual_complete()
+                call ddc#map#complete('pum')
             else
                 call feedkeys("\<c-x>\<c-o>")
             endif

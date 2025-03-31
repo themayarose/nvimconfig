@@ -1,7 +1,9 @@
 call plug#begin(g:plugin_path)
 
 " Code completion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'neovim/nvim-lspconfig'
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 
 " Interface modifications
 Plug 'vim-airline/vim-airline'
@@ -54,17 +56,17 @@ Plug 'pbrisbin/vim-syntax-shakespeare'
 " Rust
 Plug 'rust-lang/rust.vim'
 
-if g:IsWin
-    Plug 'autozimu/LanguageClient-neovim', {
-        \ 'branch': 'next',
-        \ 'do': '.\install.ps1'
-        \ }
-else
-    Plug 'autozimu/LanguageClient-neovim', {
-        \ 'branch': 'next',
-        \ 'do': './install.sh; ' . g:CONFIG_PATH . '/get_jdt.sh'
-        \ }
-endif
+" if g:IsWin
+"     Plug 'autozimu/LanguageClient-neovim', {
+"         \ 'branch': 'next',
+"         \ 'do': '.\install.ps1'
+"         \ }
+" else
+"     Plug 'autozimu/LanguageClient-neovim', {
+"         \ 'branch': 'next',
+"         \ 'do': './install.sh; ' . g:CONFIG_PATH . '/get_jdt.sh'
+"         \ }
+" endif
 
 " Pony
 " Plug 'dleonard0/pony-vim-syntax'
@@ -110,10 +112,11 @@ endif
 
 Plug 'sheerun/vim-polyglot'
 
-Plug 'OmniSharp/omnisharp-vim'
-Plug 'nickspoons/vim-sharpenup'
-Plug 'dense-analysis/ale'
-Plug 'puremourning/vimspector'
+" Plug 'OmniSharp/omnisharp-vim'
+" Plug 'nickspoons/vim-sharpenup'
+" Plug 'dense-analysis/ale'
+" Plug 'puremourning/vimspector'
 
+Plug 'ncm2/float-preview.nvim'
 
 call plug#end()

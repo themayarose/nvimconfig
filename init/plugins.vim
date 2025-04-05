@@ -4,6 +4,7 @@ call plug#begin(g:plugin_path)
 Plug 'neovim/nvim-lspconfig'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+Plug 'Decodetalkers/csharpls-extended-lsp.nvim'
 
 " Interface modifications
 Plug 'vim-airline/vim-airline'

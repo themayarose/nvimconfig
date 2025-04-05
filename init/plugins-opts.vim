@@ -18,9 +18,11 @@ if g:IsWin
 endif
 
 let g:coq_settings = {
+    \    'limits.idle_timeout': 0,
     \    'limits.completion_auto_timeout': 6.0,
+    \    'limits.completion_manual_timeout': 6.0,
     \    'auto_start': 'shut-up',
-    \    'clients.lsp.weight_adjust': 1.5,
+    \    'clients.lsp.weight_adjust': 0.5,
     \ }
 
 if g:IsWin
@@ -29,24 +31,42 @@ else
     let g:omnisharp_path = "/usr/bin/omnisharp"
 endif
 
+let g:csharpls_path = "C:\\Users\\maya\\.dotnet\\tools\\csharp-ls.EXE"
+
 lua <<EOF
 
 local lspconfig = require "lspconfig"
 local coq = require "coq"
 
+vim.g.coq_settings.auto_start = true
 
-lspconfig.omnisharp.setup(
+-- lspconfig.omnisharp.setup(
+--     coq.lsp_ensure_capabilities {
+--         cmd = { vim.api.nvim_eval "omnisharp_path" },
+--         enable_editorconfig_support = true,
+--         enable_ms_build_load_projects_on_demand = false,
+--         enable_roslyn_analyzers = true,
+--         organize_imports_on_format = true,
+--         enable_import_completion = true,
+--         sdk_include_prereleases = true,
+--         analyze_open_documents_only = false,
+--     }
+-- )
+
+lspconfig.csharp_ls.setup(
     coq.lsp_ensure_capabilities {
-        cmd = { vim.api.nvim_eval "omnisharp_path" },
+        cmd = { vim.api.nvim_eval "csharpls_path" },
         enable_editorconfig_support = true,
-        enable_ms_build_load_projects_on_demand = false,
+        enable_ms_build_load_projects_on_demand = true,
         enable_roslyn_analyzers = true,
         organize_imports_on_format = true,
         enable_import_completion = true,
         sdk_include_prereleases = true,
-        analyze_open_documents_only = false,
+        analyze_open_documents_only = true,
     }
 )
+
+require("csharpls_extended").buf_read_cmd_bind()
 
 EOF
 

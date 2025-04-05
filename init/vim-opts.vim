@@ -38,5 +38,6 @@ set list
 set splitright
 set splitbelow
 set signcolumn=auto
+set updatetime=1
 
 syntax on

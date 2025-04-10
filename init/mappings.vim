@@ -107,7 +107,7 @@ tnoremap <silent> <c-right> <c-\><c-n><c-w>l
 
 " Buffer stuff
 nnoremap <silent> <leader>bn :new<cr>
-nnoremap <silent> <leader>bw :bw #<cr>
+nnoremap <silent> <leader>bw :bp<cr>:bw #<cr>
 nnoremap <silent> <leader>bs :b #<cr>
 nnoremap <silent> <leader>bg :<c-u>exec GoToBuffer(v:count)<cr>
 nnoremap <silent> <leader>bl :bn<cr>
@@ -154,7 +154,7 @@ snoremap <silent> <Tab> <esc>:call InsertModeTab()<cr>
 snoremap <silent> <S-Tab> <esc>:call BackTab()<cr>
 inoremap <C-Tab> <c-r>="\<Tab>"<cr>
 inoremap <C-S-Tab> <c-r>="\<S-Tab>"<cr>
-inoremap <silent> <c-x><c-x> <c-r>=deoplete#mappings#manual_complete()<cr>
+" inoremap <silent> <c-x><c-x> <c-r>=deoplete#mappings#manual_complete()<cr>
 
 xnoremap <silent> <Tab> >gv
 xnoremap <silent> <S-Tab> <gv
@@ -172,7 +172,12 @@ nmap <Leader><Leader>t <Plug>(easymotion-bd-t)
 
 xnoremap <silent> <leader>/ :lua vim.lsp.buf.hover()<cr>
 nnoremap <silent> <leader>/ :lua vim.lsp.buf.hover()<cr>
-inoremap <silent> <C-/>     <esc>:lua vim.lsp.buf.signature_help()<cr>
+inoremap <silent> <C-\>     <esc>:lua vim.lsp.buf.signature_help()<cr>
+
+nnoremap <silent> <leader><leader>d :lua vim.lsp.buf.definition()<cr>
+nnoremap <silent> <leader><leader>a :lua vim.lsp.buf.code_action()<cr>
+nnoremap <silent> <leader><leader>r :lua vim.lsp.buf.references()<cr>
+nnoremap <silent> <leader><leader><f2> :lua vim.lsp.buf.rename()<cr>
 
 " nnoremap <silent> <f7> :VimspectorReset<cr>
 " xnoremap <silent> <f7> :VimspectorReset<cr>

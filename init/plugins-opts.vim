@@ -42,7 +42,29 @@ lua <<EOF
 local lspconfig = require "lspconfig"
 local coq = require "coq"
 
-vim.g.coq_settings.auto_start = true
+local _border = "rounded"
+
+local function bordered_hover(_opts)
+    _opts = _opts or {}
+    return vim.lsp.buf.hover(vim.tbl_deep_extend("force", _opts, {
+        border = _border
+    }))
+end
+
+local function bordered_signature_help(_opts)
+    _opts = _opts or {}
+    return vim.lsp.buf.signature_help(vim.tbl_deep_extend("force", _opts, {
+        border = _border
+    }))
+end
+
+-- opts and _opts aren't the same
+vim.keymap.set({'n', 'x', 'v'}, "<leader>/", bordered_hover, opts)
+-- vim.keymap.set('i', "<c-\\>", bordered_signature_help, opts)
+vim.keymap.set("i", "<c-\\>", "<cmd>LspOverloadsSignature<CR>", { noremap = true, silent = true})
+
+
+-- vim.g.coq_settings.auto_start = true
 
 -- lspconfig.omnisharp.setup(
 --     coq.lsp_ensure_capabilities {
@@ -67,6 +89,19 @@ lspconfig.csharp_ls.setup(
         enable_import_completion = true,
         sdk_include_prereleases = true,
         analyze_open_documents_only = true,
+        on_attach = function(client, bufnr)
+            if client.server_capabilities.signatureHelpProvider then
+                require('lsp-overloads').setup(client, {
+                    ui = {
+                        border = _border
+                    },
+                    keymaps = {
+                        close_signature = "<esc>"
+                    },
+                    display_automatically = false
+                })
+            end
+        end
     }
 )
 

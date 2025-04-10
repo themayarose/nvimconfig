@@ -31,7 +31,11 @@ else
     let g:omnisharp_path = "/usr/bin/omnisharp"
 endif
 
-let g:csharpls_path = "C:\\Users\\maya\\.dotnet\\tools\\csharp-ls.EXE"
+if g:IsWin
+    let g:csharpls_path = "C:\\Users\\maya\\.dotnet\\tools\\csharp-ls.EXE"
+else
+    let g:csharpls_path = "/usr/bin/csharp-ls"
+endif
 
 lua <<EOF
 

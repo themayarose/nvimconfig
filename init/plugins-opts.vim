@@ -63,6 +63,11 @@ vim.keymap.set({'n', 'x', 'v'}, "<leader>/", bordered_hover, opts)
 -- vim.keymap.set('i', "<c-\\>", bordered_signature_help, opts)
 vim.keymap.set("i", "<c-\\>", "<cmd>LspOverloadsSignature<CR>", { noremap = true, silent = true})
 
+vim.diagnostic.config {
+    Float = {
+        border = _border
+    }
+}
 
 -- vim.g.coq_settings.auto_start = true
 
@@ -243,8 +248,8 @@ function! s:latexSurround()
 endfunction
 
 " Tagbar
-if g:IsOSX == 1
-    let g:tagbar_ctags_bin = "/usr/local/bin/ctags"
+if g:IsWin == 0
+    let g:tagbar_ctags_bin = "/usr/bin/ctags"
 endif
 
 let g:tagbar_width = 33

@@ -177,6 +177,7 @@ inoremap <silent> <C-\>     <esc>:lua vim.lsp.buf.signature_help()<cr>
 nnoremap <silent> <leader><leader>d :lua vim.lsp.buf.definition()<cr>
 nnoremap <silent> <leader><leader>a :lua vim.lsp.buf.code_action()<cr>
 nnoremap <silent> <leader><leader>r :lua vim.lsp.buf.references()<cr>
+nnoremap <silent> <leader><leader>? :lua vim.diagnostic.open_float()<cr>
 nnoremap <silent> <leader><leader><f2> :lua vim.lsp.buf.rename()<cr>
 
 " nnoremap <silent> <f7> :VimspectorReset<cr>

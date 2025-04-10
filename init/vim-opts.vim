@@ -39,5 +39,6 @@ set splitright
 set splitbelow
 set signcolumn=auto
 set updatetime=1
+set winborder=rounded
 
 syntax on

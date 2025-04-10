@@ -168,13 +168,14 @@ nmap <Leader><Leader>w <Plug>(easymotion-overwin-w)
 nmap <Leader><Leader>l <Plug>(easymotion-overwin-line)
 nmap <Leader><Leader>t <Plug>(easymotion-bd-t)
 
-" Vimspector
+" Completion
 
-xnoremap <silent> <leader>/ :OmniSharpDocumentation<cr>
-nnoremap <silent> <leader>/ :OmniSharpDocumentation<cr>
-nnoremap <silent> <f7> :VimspectorReset<cr>
-xnoremap <silent> <f7> :VimspectorReset<cr>
+xnoremap <silent> <leader>/ :lua vim.lsp.buf.hover()<cr>
+nnoremap <silent> <leader>/ :lua vim.lsp.buf.hover()<cr>
+inoremap <silent> <C-/>     <esc>:lua vim.lsp.buf.signature_help()<cr>
 
+" nnoremap <silent> <f7> :VimspectorReset<cr>
+" xnoremap <silent> <f7> :VimspectorReset<cr>
 " F5 <Plug>VimspectorContinue When debugging, continue. Otherwise start debugging.
 " F3 <Plug>VimspectorStop Stop debugging.
 " F4 <Plug>VimspectorRestart Restart debugging with the same configuration.

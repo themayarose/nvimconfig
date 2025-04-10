@@ -24,7 +24,7 @@ Plug 'honza/vim-snippets'
 " Editing aids
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-surround'
-Plug 'vim-scripts/closetag.vim'
+" Plug 'vim-scripts/closetag.vim'
 Plug 'tpope/vim-commentary'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'

@@ -21,8 +21,8 @@ let g:coq_settings = {
     \    'limits.idle_timeout': 0,
     \    'limits.completion_auto_timeout': 6.0,
     \    'limits.completion_manual_timeout': 6.0,
-    \    'auto_start': 'shut-up',
-    \    'clients.lsp.weight_adjust': 0.5,
+    \    'auto_start': v:true,
+    \    'clients.lsp.weight_adjust': 0.5
     \ }
 
 if g:IsWin

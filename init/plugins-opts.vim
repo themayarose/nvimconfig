@@ -44,56 +44,30 @@ local coq = require "coq"
 
 local _border = "rounded"
 
-local function bordered_hover(_opts)
-    _opts = _opts or {}
-    return vim.lsp.buf.hover(vim.tbl_deep_extend("force", _opts, {
-        border = _border
-    }))
-end
-
-local function bordered_signature_help(_opts)
-    _opts = _opts or {}
-    return vim.lsp.buf.signature_help(vim.tbl_deep_extend("force", _opts, {
-        border = _border
-    }))
-end
-
--- opts and _opts aren't the same
-vim.keymap.set({'n', 'x', 'v'}, "<leader>/", bordered_hover, opts)
--- vim.keymap.set('i', "<c-\\>", bordered_signature_help, opts)
-vim.keymap.set("i", "<c-\\>", "<cmd>LspOverloadsSignature<CR>", { noremap = true, silent = true})
-
 vim.diagnostic.config {
-    Float = {
-        border = _border
-    }
+    signs = {
+        severity = {
+            min = vim.diagnostic.severity.WARN
+        }
+    },
+    underline = {
+        severity = {
+            min = vim.diagnostic.severity.HINT
+        }
+    },
 }
 
--- vim.g.coq_settings.auto_start = true
 
--- lspconfig.omnisharp.setup(
---     coq.lsp_ensure_capabilities {
---         cmd = { vim.api.nvim_eval "omnisharp_path" },
---         enable_editorconfig_support = true,
---         enable_ms_build_load_projects_on_demand = false,
---         enable_roslyn_analyzers = true,
---         organize_imports_on_format = true,
---         enable_import_completion = true,
---         sdk_include_prereleases = true,
---         analyze_open_documents_only = false,
---     }
--- )
-
-lspconfig.csharp_ls.setup(
+lspconfig.omnisharp.setup(
     coq.lsp_ensure_capabilities {
-        cmd = { vim.api.nvim_eval "csharpls_path" },
+        cmd = { vim.api.nvim_eval "omnisharp_path" },
         enable_editorconfig_support = true,
-        enable_ms_build_load_projects_on_demand = true,
+        enable_ms_build_load_projects_on_demand = false,
         enable_roslyn_analyzers = true,
         organize_imports_on_format = true,
         enable_import_completion = true,
         sdk_include_prereleases = true,
-        analyze_open_documents_only = true,
+        analyze_open_documents_only = false,
         on_attach = function(client, bufnr)
             if client.server_capabilities.signatureHelpProvider then
                 require('lsp-overloads').setup(client, {
@@ -110,7 +84,34 @@ lspconfig.csharp_ls.setup(
     }
 )
 
-require("csharpls_extended").buf_read_cmd_bind()
+-- lspconfig.csharp_ls.setup(
+--     coq.lsp_ensure_capabilities {
+--         cmd = { vim.api.nvim_eval "csharpls_path" },
+--         enable_editorconfig_support = true,
+--         enable_ms_build_load_projects_on_demand = true,
+--         enable_roslyn_analyzers = true,
+--         organize_imports_on_format = true,
+--         enable_import_completion = true,
+--         sdk_include_prereleases = true,
+--         analyze_open_documents_only = true,
+--         on_attach = function(client, bufnr)
+--             if client.server_capabilities.signatureHelpProvider then
+--                 require('lsp-overloads').setup(client, {
+--                     ui = {
+--                         border = _border
+--                     },
+--                     keymaps = {
+--                         close_signature = "<esc>"
+--                     },
+--                     display_automatically = false
+--                 })
+--             end
+--         end
+--     }
+-- )
+-- 
+-- require("csharpls_extended").buf_read_cmd_bind()
+
 
 EOF
 

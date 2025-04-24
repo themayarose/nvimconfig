@@ -172,7 +172,9 @@ nmap <Leader><Leader>t <Plug>(easymotion-bd-t)
 
 xnoremap <silent> <leader>/ :lua vim.lsp.buf.hover()<cr>
 nnoremap <silent> <leader>/ :lua vim.lsp.buf.hover()<cr>
-inoremap <silent> <C-\>     <esc>:lua vim.lsp.buf.signature_help()<cr>
+vnoremap <silent> <leader>/ :lua vim.lsp.buf.hover()<cr>
+inoremap <silent> <C-_>     <cmd>LspOverloadsSignature<cr>
+nnoremap <silent> <C-_>     <cmd>LspOverloadsSignature<cr>
 
 nnoremap <silent> <leader><leader>d :lua vim.lsp.buf.definition()<cr>
 nnoremap <silent> <leader><leader>a :lua vim.lsp.buf.code_action()<cr>

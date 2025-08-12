@@ -13,7 +13,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
 " Plug 'ludovicchabant/vim-gutentags'
-Plug 'equalsraf/neovim-qt', { 'rtp': 'src/gui/runtime' }
+" Plug 'equalsraf/neovim-qt', { 'rtp': 'src/gui/runtime' }
 
 " Error checking
 " Plug 'benekastah/neomake'

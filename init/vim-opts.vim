@@ -42,3 +42,5 @@ set updatetime=1
 set winborder=rounded
 
 syntax on
+
+let g:python3_host_prog = "C:\\Users\\maya\\scoop\\shims\\python3.EXE"

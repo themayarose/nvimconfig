@@ -43,4 +43,9 @@ set winborder=rounded
 
 syntax on
 
-let g:python3_host_prog = "C:\\Users\\maya\\scoop\\shims\\python3.EXE"
+if has("win32")
+    let g:python3_host_prog = "C:\\Users\\maya\\scoop\\shims\\python3.EXE"
+else
+    let g:python3_host_prog = "/usr/sbin/python3"
+end
+

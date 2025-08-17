@@ -6,6 +6,7 @@ Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'Decodetalkers/csharpls-extended-lsp.nvim'
 Plug 'Issafalcon/lsp-overloads.nvim'
+Plug 'neomake/neomake'
 
 " Interface modifications
 Plug 'vim-airline/vim-airline'

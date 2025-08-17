@@ -84,6 +84,7 @@ vim.diagnostic.config {
 --     }
 -- )
 
+
 lspconfig.csharp_ls.setup(
     coq.lsp_ensure_capabilities {
         cmd = { vim.api.nvim_eval "csharpls_path" },
@@ -112,6 +113,28 @@ lspconfig.csharp_ls.setup(
 
 require("csharpls_extended").buf_read_cmd_bind()
 
+lspconfig.rust_analyzer.setup(
+    coq.lsp_ensure_capabilities {
+        ['rust-analyzer'] = {
+            diagnostics = {
+                enable = true;
+            }
+        }
+    }
+)
+
+-- vim.lsp.config('rust_analyzer', {
+--   settings = {
+--     ['rust-analyzer'] = {
+--       diagnostics = {
+--         enable = false;
+--       }
+--     }
+--   }
+-- })
+
+vim.lsp.enable('rust_analyzer')
+
 
 EOF
 
@@ -123,7 +146,7 @@ let g:javascript_plugin_flow = 1
 let g:vim_jsx_pretty_colorful_config = 1
 
 " Jedi
-let g:deoplete#sources#jedi#show_docstring = 1
+" let g:deoplete#sources#jedi#show_docstring = 1
 
 " Deoplete Clang
 " let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'

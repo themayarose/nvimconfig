@@ -8,6 +8,14 @@ Plug 'Decodetalkers/csharpls-extended-lsp.nvim'
 Plug 'Issafalcon/lsp-overloads.nvim'
 Plug 'neomake/neomake'
 
+" Debug
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'nicholasmata/nvim-dap-cs'
+Plug 'nvim-neotest/nvim-nio'
+Plug 'theHamsta/nvim-dap-virtual-text'
+
+
 " Interface modifications
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'

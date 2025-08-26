@@ -136,6 +136,53 @@ lspconfig.rust_analyzer.setup(
 vim.lsp.enable('rust_analyzer')
 
 
+-- DEBUG
+
+local dap = require("dap")
+local dapcs = require("dap-cs")
+local ui = require("dapui")
+local dap_virtual_text = require("nvim-dap-virtual-text")
+
+dap_virtual_text.setup()
+
+dapcs.setup({
+    dap_configurations = {
+        {
+            -- Must be "coreclr" or it will be ignored by the plugin
+            type = "coreclr",
+            name = "Attach remote",
+            mode = "remote",
+            request = "attach"
+        },
+    },
+    netcoredbg = {
+        -- the path to the executable netcoredbg which will be used for debugging.
+        -- by default, this is the "netcoredbg" executable on your PATH.
+        path = "/usr/sbin/netcoredbg"
+    }
+})
+
+ui.setup()
+
+vim.fn.sign_define("DapBreakpoint", { text = "🐞" })
+
+dap.listeners.before.attach.dapui_config = function()
+    ui.open()
+end
+
+dap.listeners.before.launch.dapui_config = function()
+    ui.open()
+end
+
+-- dap.listeners.before.event_terminated.dapui_config = function()
+--     ui.close()
+-- end
+-- 
+-- dap.listeners.before.event_exited.dapui_config = function()
+--     ui.close()
+-- end
+
+
 EOF
 
 

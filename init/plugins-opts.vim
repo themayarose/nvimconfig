@@ -27,14 +27,12 @@ let g:coq_settings = {
 
 if g:IsWin
     let g:omnisharp_path = "C:\\Users\\maya\\scoop\\apps\\omnisharp\\current\\OmniSharp.exe"
+    let g:csharpls_path = "C:\\Users\\maya\\.dotnet\\tools\\csharp-ls.EXE"
+    let g:netcoredbg = "C:\\Users\\maya\\scoop\\shims\\netcoredbg.EXE"
 else
     let g:omnisharp_path = "/usr/bin/omnisharp"
-endif
-
-if g:IsWin
-    let g:csharpls_path = "C:\\Users\\maya\\.dotnet\\tools\\csharp-ls.EXE"
-else
     let g:csharpls_path = "/usr/bin/csharp-ls"
+    let g:netcoredbg = "/usr/sbin/netcoredbg"
 endif
 
 lua <<EOF
@@ -158,7 +156,7 @@ dapcs.setup({
     netcoredbg = {
         -- the path to the executable netcoredbg which will be used for debugging.
         -- by default, this is the "netcoredbg" executable on your PATH.
-        path = "/usr/sbin/netcoredbg"
+        path = { vim.api.nvim_eval "netcoredbg" }
     }
 })
 

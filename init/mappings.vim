@@ -61,6 +61,8 @@ nnoremap <silent> <c-s-pagedown> <c-\><c-n>:tabn<cr>
 if has('win32')
     nnoremap <silent> <leader>t :vsp \| term pwsh -nol<cr>
     nnoremap <silent> <leader>T :sp \| term pwsh -nol<cr>
+    nnoremap <silent> <leader><m-t> :vsp \| term wsl --distribution-id {4fecb98a-3f8f-46db-943b-c9798f59bee7} --cd ~ -e zsh<cr>
+    nnoremap <silent> <leader><m-T> :sp \| term wsl --distribution-id {4fecb98a-3f8f-46db-943b-c9798f59bee7} --cd ~ -e zsh<cr>
 else
     nnoremap <silent> <leader>t :vsp \| term<cr>
     nnoremap <silent> <leader>T :sp \| term<cr>
@@ -155,6 +157,8 @@ snoremap <silent> <S-Tab> <esc>:call BackTab()<cr>
 inoremap <C-Tab> <c-r>="\<Tab>"<cr>
 inoremap <C-S-Tab> <c-r>="\<S-Tab>"<cr>
 " inoremap <silent> <c-x><c-x> <c-r>=deoplete#mappings#manual_complete()<cr>
+
+inoremap <s-tab> <Plug>delimitMateS-Tab
 
 xnoremap <silent> <Tab> >gv
 xnoremap <silent> <S-Tab> <gv

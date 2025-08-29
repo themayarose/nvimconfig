@@ -15,6 +15,12 @@ Plug 'nicholasmata/nvim-dap-cs'
 Plug 'nvim-neotest/nvim-nio'
 Plug 'theHamsta/nvim-dap-virtual-text'
 
+if has('win32')
+    Plug 'saul-marquez/nvim-dap-cs', { 'branch': 'feat/win-compatibility' }
+else
+    Plug 'nicholasmata/nvim-dap-cs'
+end
+
 
 " Interface modifications
 Plug 'vim-airline/vim-airline'
@@ -28,8 +34,8 @@ Plug 'majutsushi/tagbar'
 " Plug 'benekastah/neomake'
 
 " Snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
 
 " Editing aids
 Plug 'Raimondi/delimitMate'
@@ -90,7 +96,7 @@ Plug 'hynek/vim-python-pep8-indent'
 
 " C/C++
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'zchee/deoplete-clang'
+" Plug 'zchee/deoplete-clang'
 
 " Javascript
 " Plug 'ternjs/tern_for_vim', { 'do': 'rm -rf node_modules && npm install && npm install https://github.com/angelozerr/tern-react' }

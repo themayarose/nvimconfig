@@ -8,18 +8,11 @@ let g:airline#extensions#tabline#formatter = 'custom_format'
 let g:airline#extensions#tabline#show_buffers = 2
 let g:airline#extensions#tabline#ignore_bufadd_pat = '!|defx|gundo|nerd_tree|startify|tagbar|undotree|vimfiler'
 
-if exists('g:GtkGuiLoaded')
-    runtime init/airline-powerline.vim
-endif
-
-" COC
-if g:IsWin
-    let g:coc_global_extensions = [ 'coc-powershell' ]
-endif
+runtime init/airline-powerline.vim
 
 let g:coq_settings = {
     \    'limits.idle_timeout': 0,
-    \    'limits.completion_auto_timeout': 6.0,
+    \    'limits.completion_auto_timeout': 0.25,
     \    'limits.completion_manual_timeout': 6.0,
     \    'auto_start': 'shut-up',
     \    'clients.lsp.weight_adjust': 0.5
@@ -93,6 +86,12 @@ lspconfig.csharp_ls.setup(
         enable_import_completion = true,
         sdk_include_prereleases = true,
         analyze_open_documents_only = true,
+        root_dir = vim.fs.root(
+            0,
+            function (name, path)
+                return name:match('%.slnx?$') ~= nil
+            end
+        ),
         on_attach = function(client, bufnr)
             if client.server_capabilities.signatureHelpProvider then
                 require('lsp-overloads').setup(client, {
@@ -102,7 +101,7 @@ lspconfig.csharp_ls.setup(
                     keymaps = {
                         close_signature = "<esc>"
                     },
-                    display_automatically = false
+                    display_automatically = true
                 })
             end
         end
@@ -175,7 +174,7 @@ end
 -- dap.listeners.before.event_terminated.dapui_config = function()
 --     ui.close()
 -- end
--- 
+--
 -- dap.listeners.before.event_exited.dapui_config = function()
 --     ui.close()
 -- end

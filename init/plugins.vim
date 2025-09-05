@@ -1,4 +1,4 @@
-call plug#begin(g:plugin_path)
+    " call plug#begin(g:plugin_path)
 
 " Code completion
 Plug 'neovim/nvim-lspconfig'

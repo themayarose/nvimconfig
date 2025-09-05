@@ -1,4 +1,4 @@
-    " call plug#begin(g:plugin_path)
+call plug#begin(g:plugin_path)
 
 " Code completion
 Plug 'neovim/nvim-lspconfig'
@@ -26,7 +26,9 @@ end
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
-Plug 'majutsushi/tagbar'
+Plug 'liuchengxu/vista.vim'
+
+" Plug 'majutsushi/tagbar'
 " Plug 'ludovicchabant/vim-gutentags'
 " Plug 'equalsraf/neovim-qt', { 'rtp': 'src/gui/runtime' }
 

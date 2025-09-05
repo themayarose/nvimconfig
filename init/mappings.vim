@@ -35,7 +35,7 @@ command Qa :qa
 command Wsudo :w ! sudo tee %
 
 " Plugins 101
-noremap <silent> <F2> :TagbarToggle<cr>
+noremap <silent> <F2> :Vista!!<cr><c-w><c-p>
 noremap <silent> <F3> :NERDTreeToggle<cr>
 noremap <silent> <leader>sb :NERDTree<cr>:TagbarOpen<cr><c-w>J<c-w>k<c-w>H:exe "vertical resize " . (&co - 33)<cr><c-w>l<c-w>r<c-w>h
 
@@ -127,7 +127,7 @@ if g:IsOSX == 1
 endif
 
 " Fuzzy navigation
-nnoremap <silent> <leader>0 :BTags<cr>
+nnoremap <silent> <leader>0 :Vista finder<cr>
 nnoremap <silent> <leader>pf :Files<cr>
 nnoremap <silent> <leader>bf :Buffers<cr>
 

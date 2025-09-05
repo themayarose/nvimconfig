@@ -316,12 +316,17 @@ function! s:latexSurround()
 endfunction
 
 " Tagbar
-if g:IsWin == 0
-    let g:tagbar_ctags_bin = "/usr/bin/ctags"
-endif
+" if g:IsWin == 0
+"     let g:tagbar_ctags_bin = "/usr/bin/ctags"
+" endif
 
-let g:tagbar_width = 33
-let g:tagbar_sort = 0
+" let g:tagbar_width = 33
+" let g:tagbar_sort = 0
+
+let g:vista_executive_for = {
+    \ 'cs': 'nvim_lsp',
+    \ 'rs': 'nvim_lsp',
+    \ }
 
 if g:IsOSX
     let g:javalc_config = g:CONFIG_PATH . '/jdt/config_mac'

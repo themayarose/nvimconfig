@@ -30,7 +30,6 @@ endif
 
 lua <<EOF
 
-local lspconfig = require "lspconfig"
 local coq = require "coq"
 
 local _border = "rounded"
@@ -76,7 +75,7 @@ vim.diagnostic.config {
 -- )
 
 
-lspconfig.csharp_ls.setup(
+vim.lsp.config('csharp_ls',
     coq.lsp_ensure_capabilities {
         cmd = { vim.api.nvim_eval "csharpls_path" },
         enable_editorconfig_support = true,
@@ -110,7 +109,7 @@ lspconfig.csharp_ls.setup(
 
 require("csharpls_extended").buf_read_cmd_bind()
 
-lspconfig.rust_analyzer.setup(
+vim.lsp.config('rust_analyzer',
     coq.lsp_ensure_capabilities {
         ['rust-analyzer'] = {
             diagnostics = {

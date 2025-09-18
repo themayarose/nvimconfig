@@ -74,6 +74,8 @@ vim.diagnostic.config {
 --     }
 -- )
 
+vim.lsp.enable('rust_analyzer')
+vim.lsp.enable('csharp_ls')
 
 vim.lsp.config('csharp_ls',
     coq.lsp_ensure_capabilities {
@@ -129,7 +131,6 @@ vim.lsp.config('rust_analyzer',
 --   }
 -- })
 
-vim.lsp.enable('rust_analyzer')
 
 
 -- DEBUG

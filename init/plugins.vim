@@ -9,9 +9,8 @@ Plug 'Issafalcon/lsp-overloads.nvim'
 Plug 'neomake/neomake'
 
 " Debug
-Plug 'mfussenegger/nvim-dap'
+Plug 'https://codeberg.org/mfussenegger/nvim-dap.git'
 Plug 'rcarriga/nvim-dap-ui'
-Plug 'nicholasmata/nvim-dap-cs'
 Plug 'nvim-neotest/nvim-nio'
 Plug 'theHamsta/nvim-dap-virtual-text'
 

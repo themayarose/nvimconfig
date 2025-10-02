@@ -136,28 +136,28 @@ vim.lsp.config('rust_analyzer',
 -- DEBUG
 
 local dap = require("dap")
-local dapcs = require("dap-cs")
+-- local dapcs = require("dap-cs")
 local ui = require("dapui")
 local dap_virtual_text = require("nvim-dap-virtual-text")
 
 dap_virtual_text.setup()
 
-dapcs.setup({
-    dap_configurations = {
-        {
-            -- Must be "coreclr" or it will be ignored by the plugin
-            type = "coreclr",
-            name = "Attach remote",
-            mode = "remote",
-            request = "attach"
-        },
-    },
-    netcoredbg = {
-        -- the path to the executable netcoredbg which will be used for debugging.
-        -- by default, this is the "netcoredbg" executable on your PATH.
-        path = { vim.api.nvim_eval "netcoredbg" }
-    }
-})
+-- dapcs.setup({
+--     dap_configurations = {
+--         {
+--             -- Must be "coreclr" or it will be ignored by the plugin
+--             type = "coreclr",
+--             name = "Attach remote",
+--             mode = "remote",
+--             request = "attach"
+--         },
+--     },
+--     netcoredbg = {
+--         -- the path to the executable netcoredbg which will be used for debugging.
+--         -- by default, this is the "netcoredbg" executable on your PATH.
+--         path = { vim.api.nvim_eval "netcoredbg" }
+--     }
+-- })
 
 ui.setup()
 
@@ -171,13 +171,54 @@ dap.listeners.before.launch.dapui_config = function()
     ui.open()
 end
 
--- dap.listeners.before.event_terminated.dapui_config = function()
---     ui.close()
--- end
---
--- dap.listeners.before.event_exited.dapui_config = function()
---     ui.close()
--- end
+dap.adapters.coreclr = function(cb, config)
+    local path = vim.fn.getcwd() .. "\\netcoredbg.file.txt"
+    local file = io.open(path)
+    if not file then return nil end
+    local program = file:read("*a"):gsub("\n[^\n]*$", "")
+    file:close()
+    print(program)
+    cb({
+        type = 'executable',
+        command = vim.api.nvim_eval("netcoredbg"),
+        args = {
+            '--interpreter=vscode',
+            '--',
+            program
+        },
+        options = {
+            externalTerminal = false,
+        },
+    })
+end
+
+dap.configurations.cs = {
+    {
+        type = "coreclr",
+        name = "netcoredbg",
+        request = "launch",
+        program = "",
+        args = {},
+        justMyCode = false,
+        stopAtEntry = false,
+        runInTerminal = false,
+        logging = {
+            moduleLoad = false,
+            processExit = false,
+        },
+        cwd = function()
+            return vim.fn.getcwd()
+        end,
+    },
+}
+
+dap.listeners.before.event_terminated.dapui_config = function()
+    ui.close()
+end
+
+dap.listeners.before.event_exited.dapui_config = function()
+    ui.close()
+end
 
 
 EOF

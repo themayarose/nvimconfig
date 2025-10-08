@@ -4,6 +4,7 @@ au TermOpen term://* setl nonumber | startinsert
 
 " Restore quickfix <cr>
 autocmd BufReadPost quickfix nnoremap <buffer> <cr> <cr>
+autocmd FileType qf wincmd J
 
 " Autocheck with neomake
 " au! BufEnter,BufWritePost *.js,*.jsx,*.py,*.hs,*.c,*.cpp,*.rs,*.go Neomake

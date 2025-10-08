@@ -86,7 +86,7 @@ vim.lsp.config('csharp_ls',
         organize_imports_on_format = true,
         enable_import_completion = true,
         sdk_include_prereleases = true,
-        analyze_open_documents_only = true,
+        analyze_open_documents_only = false,
         root_dir = vim.fs.root(
             0,
             function (name, path)
@@ -357,13 +357,6 @@ endif
 
 
 let g:float_preview#docked = 0
-
-let g:ale_linters = {
-      \  'cs':['syntax', 'semantic', 'issues'],
-      \ }
-
-" VimSpector
-let g:vimspector_enable_mappings = 'HUMAN'
 
 " Gruvbox
 let g:gruvbox_italic = 1

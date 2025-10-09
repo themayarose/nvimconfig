@@ -225,19 +225,20 @@ let g:necoghc_use_stack = 1
 " Neomake
 let g:neomake_logfile=$HOME . '/neomake.log'
 let g:neomake_open_list=0
-let g:neomake_verbose = 2
+let g:neomake_verbose = 1
 let g:airline#extensions#neomake#enabled = 1
 
-" Neomake test
 let s:spinner_index = 0
 let s:active_spinners = 0
-let s:spinner_states = ['|', '/', '--', '\', '|', '/', '--', '\']
-let s:spinner_states = ['┤', '┘', '┴', '└', '├', '┌', '┬', '┐']
+
+" let s:spinner_states = ['|', '/', '--', '\', '|', '/', '--', '\']
+" let s:spinner_states = ['┤', '┘', '┴', '└', '├', '┌', '┬', '┐']
+" let s:spinner_states = ['←', '↑', '→', '↓']
+" let s:spinner_states = ['d', 'q', 'p', 'b']
+" let s:spinner_states = ['.', 'o', 'O', '°', 'O', 'o', '.']
+" let s:spinner_states = ['■', '□', '▪', '▫', '▪', '□', '■']
+
 let s:spinner_states = ['←', '↖', '↑', '↗', '→', '↘', '↓', '↙']
-let s:spinner_states = ['←', '↑', '→', '↓']
-let s:spinner_states = ['d', 'q', 'p', 'b']
-let s:spinner_states = ['.', 'o', 'O', '°', 'O', 'o', '.']
-let s:spinner_states = ['■', '□', '▪', '▫', '▪', '□', '■']
 
 function! StartSpinner()
     let b:show_spinner = 1
@@ -257,7 +258,7 @@ endfunction
 
 function! SpinSpinner(timer)
     let s:spinner_index = float2nr(fmod(s:spinner_index + 1, len(s:spinner_states)))
-    redraw
+    redraw!
 endfunction
 
 function! SpinnerText()
@@ -271,11 +272,12 @@ endfunction
 augroup neomake_hooks
     au!
     autocmd User NeomakeJobInit :call StartSpinner()
-    autocmd User NeomakeJobInit :echom "Build started"
     autocmd User NeomakeFinished :call StopSpinner()
-    autocmd User NeomakeFinished :echom "Build complete"
 augroup END
 
+call airline#parts#define_function('neomake','SpinnerText')
+
+let g:airline_section_x = airline#section#create_right(['coc_current_function', 'bookmark', 'scrollbar', 'tagbar', 'taglist', 'vista', 'gutentags', 'neomake', 'gen_tags', 'omnisharp', 'grepper', 'codeium', 'filetype']) 
 
 " EasyMotion
 let g:EasyMotion_do_mapping = 0

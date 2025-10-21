@@ -13,7 +13,7 @@ set shiftround
 set laststatus=2
 set incsearch
 set backspace=indent,eol,start
-set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+" set listchars=tab:>\\ ,trail:-,extends:>,precedes:<,nbsp:+
 set scrolloff=5
 set sidescrolloff=5
 set mouse=a
@@ -44,8 +44,8 @@ set winborder=rounded
 syntax on
 
 if has("win32")
-    let g:python3_host_prog = "C:\\Users\\maya\\scoop\\shims\\python3.EXE"
+    let g:python3_host_prog = "C:/Users/maya/scoop/apps/python/current/python.exe"
 else
-    let g:python3_host_prog = "/usr/sbin/python3"
+    let g:python3_host_prog = "/usr/bin/python3"
 end
 

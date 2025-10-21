@@ -202,7 +202,9 @@ nnoremap <silent> <leader><leader><f2> :lua vim.lsp.buf.rename()<cr>
 "
 lua << EOF
 
-vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
+vim.keymap.set('n', '<leader><leader>b', function() vim.cmd('Neomake!') end)
+
+vim.keymap.set('n', '<leader><leader>r', function() require('dap').continue() end)
 vim.keymap.set('n', '<F10>', function() require('dap').step_over() end)
 vim.keymap.set('n', '<F11>', function() require('dap').step_into() end)
 vim.keymap.set('n', '<F12>', function() require('dap').step_out() end)

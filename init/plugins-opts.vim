@@ -76,10 +76,40 @@ vim.diagnostic.config {
 
 vim.lsp.enable('rust_analyzer')
 vim.lsp.enable('csharp_ls')
+-- vim.lsp.enable('omnisharp')
+
+-- local pid = vim.fn.getpid();
+
+
+-- settings = {
+--     FormattingOptions = {
+--         EnableEditorConfigSupport = true,
+--         OrganizeImports = true,
+--     },
+--     MsBuild = {
+--         LoadProjectsOnDemand = true,
+--     },
+--     RoslynExtensionsOptions = {
+--         EnableAnalyzersSupport = true,
+--         EnableImportCompletion = true,
+--         AnalyzeOpenDocumentsOnly = false
+--     },
+--     Sdk = {
+--         IncludePrereleases = true,
+--     }
+-- },
+-- vim.lsp.config('omnisharp',
 
 vim.lsp.config('csharp_ls',
     coq.lsp_ensure_capabilities {
-        cmd = { vim.api.nvim_eval "csharpls_path" },
+        cmd = { vim.api.nvim_eval("csharpls_path") },
+        -- cmd = {
+        --     vim.api.nvim_eval("omnisharp_path"),
+        --     "--languageserver",
+        --     "--hostPID",
+        --     tostring(pid)
+        -- },
+        filetypes = { "cs" },
         enable_editorconfig_support = true,
         enable_ms_build_load_projects_on_demand = true,
         enable_roslyn_analyzers = true,

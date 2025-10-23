@@ -187,7 +187,7 @@ dap.adapters.coreclr = function(cb, config)
             program
         },
         options = {
-            externalTerminal = false,
+            detached = false
         },
     })
 end
@@ -201,7 +201,7 @@ dap.configurations.cs = {
         args = {},
         justMyCode = false,
         stopAtEntry = false,
-        runInTerminal = false,
+        console = "integratedTerminal",
         logging = {
             moduleLoad = false,
             processExit = false,
@@ -211,6 +211,8 @@ dap.configurations.cs = {
         end,
     },
 }
+
+dap.defaults.coreclr.exception_breakpoints = { 'user-unhandled' }
 
 dap.listeners.before.event_terminated.dapui_config = function()
     ui.close()
